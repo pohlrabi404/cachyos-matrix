@@ -56,3 +56,33 @@ sudo chmod a+wr /opt/spotify/Apps -R
 
 # Set qutebrowser as default
 xdg-settings set default-web-browser org.qutebrowser.qutebrowser.desktop
+cat | sudo tee /etc/systemd/user/dbus.socket << EOF
+[Unit]
+Description=D-Bus User Message Bus Socket
+
+[Socket]
+ListenStream=%t/bus
+
+[Install]
+WantedBy=sockets.target
+Also=dbus.service
+EOF
+
+cat | sudo tee /etc/systemd/user/dbus.service << EOF
+[Unit]
+Description=D-Bus User Message Bus
+Documentation=man:dbus-daemon(1)
+Requires=dbus.socket
+
+[Service]
+ExecStart=/usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation
+ExecReload=/usr/bin/dbus-send --print-reply --session --type=method_call --dest=org.freedesktop.DBus / org.freedesktop.DBus.ReloadConfig
+
+[Install]
+Also=dbus.socket
+EOF
+
+# Apply spotify theme
+systemctl --global enable dbus.socket
+spicetify config current_theme Deary
+spicetify apply

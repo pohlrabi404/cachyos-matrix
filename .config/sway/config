@@ -184,10 +184,13 @@ exec swaybg -i ~/backgrounds/matrix.png -m fill
     bindsym $mod+Shift+$up resize shrink height 10px
     bindsym $mod+Shift+$right resize grow width 10px
 
+#### Startup
 #
 # Status Bar:
 #
 exec waybar &
+# Browser
+exec qutebrowser &
 
 #### Behaviour
 #

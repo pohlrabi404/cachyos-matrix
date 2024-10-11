@@ -1,0 +1,61 @@
+[managers.system]
+items = [
+#
+# System
+#
+  "keyd",
+  "neovim",
+  "swayfx",
+
+#
+# Browser
+#
+  "qutebrowser",
+  "python-adblock",
+
+#
+# Fuzzy Finder
+# 
+  "fzf",
+
+#
+# Background
+#
+  "swaybg",
+
+# 
+# Japanese font
+#
+  "ttf-koruri",
+  "fcitx5",
+  "fcitx5-configtool",
+  "fcitx5-gtk",
+  "fcitx5-qt",
+  "fcitx5-mozc",
+
+#
+# Excel
+#
+  "pdfjs",
+  "libreoffice-fresh",
+
+#
+# Screen Capture
+#
+  "slurp",
+  "grim",
+  "swayimg",
+  "wl-clipboard",
+  "wf-recorder",
+
+#
+# Wireshark
+#
+  "wireshark-qt",
+
+#
+# Spotify
+#
+  "spicetify-cli",
+  "spotify",
+]

@@ -1,0 +1,160 @@
+/*Start flavours*/
+@define-color base00 #000000;
+@define-color base01 #5b4a6e;
+@define-color base02 #7d6d8b;
+@define-color base03 #9e90a8;
+@define-color base04 #c0b3c5;
+@define-color base05 #e1d6e2;
+@define-color base06 #e6dce6;
+@define-color base07 #eae2ea;
+@define-color base08 #9555eb;
+@define-color base09 #c65bdd;
+@define-color base0A #b96bea;
+@define-color base0B #bb64c3;
+@define-color base0C #ec83fa;
+@define-color base0D #637be4;
+@define-color base0E #dd7bf4;
+@define-color base0F #9f57d6;
+/*End flavours*/
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Roboto,'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(0,0,0,0);
+    color: @base07;
+}
+
+window#waybar.hidden {
+    opacity: 0.0;
+}
+
+#workspaces {
+    background-color: @base00;
+    border-radius: 20px;
+    padding: 0 15px;
+    border: 2px solid #00f000
+}
+
+#workspaces button {
+    margin: 0 5px;
+    padding: 0;
+    background: transparent;
+    color: @base07;
+}
+
+#workspaces button.focused {
+    color: #00f000;
+}
+
+#workspaces button.urgent {
+    color: #ff5555;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    border-bottom: 2px solid @base0C;
+}
+
+#window {
+    background-color: @base00;
+    border-radius: 0 20px 20px 0;
+    padding: 0 20px;
+    margin: 0 10px 0 0;
+    border: 2px solid #00f000
+}
+
+#clock, #disk, #date, #battery, #cpu, #memory, #temperature, #backlight, #network-tray, #pulseaudio, #custom-media, #mode, #idle_inhibitor {
+    padding: 0 20px;
+    margin: 0 10px;
+    background-color: @base00;
+    color: @base07;
+    border-radius: 20px;
+    border: 2px solid #00f000
+}
+
+#clock {
+}
+
+#date {
+}
+
+#battery {
+}
+
+#battery.charging {
+}
+
+@keyframes blink {
+    to {
+        background-color: @base07;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network-tray {
+    border-radius: 20px 0 0 20px;
+    padding-right: 10px;
+}
+
+#cpu {
+}
+
+#memory {
+}
+
+#backlight {
+}
+
+#network {
+    padding:  0 10px 0 0;
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#custom-media {
+}
+
+.custom-spotify {
+}
+
+.custom-vlc {
+}
+
+#temperature {
+}
+
+#temperature.critical {
+}
+
+#tray {
+    padding: 0 10px 0 0;
+}
+
+#idle_inhibitor {
+}
+
+#idle_inhibitor.activated {
+}

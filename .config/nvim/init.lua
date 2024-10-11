@@ -1,0 +1,4 @@
+require("configs.lazy")
+require("keybinds")
+require("options")
+require("theme")

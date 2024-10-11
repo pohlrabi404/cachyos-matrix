@@ -1,0 +1,126 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 40, // Waybar height
+    "margin": "20 30 0 30",
+    //"width": 120, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/window", "clock", "clock#date", "disk", "backlight"],
+    "modules-center": ["sway/workspaces", "sway/mode", "custom/media"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "battery", "group/network-tray"  ],
+    "mode": {
+	"docked": {
+	    "output": ["DP-1"],
+ 	}
+    },
+    // Modules configuration
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "disable-markup" : false,
+         "format": "  {icon}  ",
+	 "persistent_workspaces": {
+		"1": [],
+		"2": [],
+		"3": [],
+		"4": [],
+		"9": [],
+		"10": []
+	 },
+         //"format":"{icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "9": "",
+             "10": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+     "disk": {
+        "interval": 30,
+        "format": "<span color=\"#00ff00\"></span>   {percentage_used}%",
+     },
+     "backlight": {
+        "format": "{icon}   {percent}%",
+        "format-icons": ["<span color=\"#000000\">󰖨</span>", "<span color=\"#009000\">󰖨</span>", "<span color=\"#00ff00\">󰖨</span>"]
+     },
+    "sway/window": {
+      "format": "",
+      "icon": true,
+      "icon-size": 24,
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\"><span color=\"#00f000\"></span>  {}</span>", // Icon: expand-arrows-alt
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "interval": 1,
+        "format": "<span color=\"#00f000\"></span>  {:%H : %M : %S}",
+    },
+    "clock#date": {
+      "interval": 10,
+      "format": "<span color=\"#00f000\"></span>  {:%e %b %Y}", // Icon: calendar-alt
+      "tooltip-format": "{:%e %B %Y}",
+    },
+    "cpu": {
+        "format": "<span color=\"#00f000\"></span>  {usage}%  ({load})"
+    },
+    "memory": {
+        "format": "<span color=\"#00f000\"></span>  {}%"
+    },
+    "battery": {
+	"interval": 10,
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "<span color=\"#ff5555\"></span>",
+            "<span color=\"#ffb86c\"></span>",
+            "<span color=\"#f1fa8c\"></span>",
+            "<span color=\"#50fa7b\"></span>",
+            "<span color=\"#50fa7b\"></span>"
+        ]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": "<span color=\"#00f000\"></span>",
+        "format-ethernet": "<span color=\"#00f000\"></span>",
+        "format-disconnected": "<span color=\"#00f000\">⚠</span>",
+        "interval" : 7
+    },
+    "group/network-tray": {
+        "orientation": "horizontal",
+        "modules": [
+          "network",
+          "tray"
+        ],
+      },
+    "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "<span color=\"#00f000\">{icon}</span>    {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}

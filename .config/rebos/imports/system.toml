@@ -59,4 +59,9 @@ items = [
   "spicetify-cli",
   "spotify",
   "spotblock-git",
+
+#
+# Matrix for funsie
+#
+  "cmatrix",
 ]

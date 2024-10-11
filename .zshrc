@@ -32,6 +32,13 @@ function szsh() {
   source ~/.zshrc
 }
 
+### Config repo
+function pconfig() {
+  eval $(ssh-agent -s) 
+  ssh-add $HOME/id_matrix
+  cd $HOME/dotfiles/pohlrabi/.config
+}
+
 #
 # Alias
 #

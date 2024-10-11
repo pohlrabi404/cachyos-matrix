@@ -1,6 +1,6 @@
 config.load_autoconfig(False)
 
-c.tabs.position = "left"
+c.tabs.position = "right"
 c.tabs.title.format = ""
 c.tabs.favicons.scale = 2
 c.tabs.padding = {

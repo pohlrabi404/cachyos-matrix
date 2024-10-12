@@ -10,6 +10,7 @@ local wiki_templates = {
         source_filename = '/home/pohlrabi/wiki/templates/default.md' 
     }
 }
-
 -- Set the wiki templates in the global variable
 vim.g.wiki_templates = wiki_templates
+
+vim.g.wiki_root = '~/wiki/knowledge'

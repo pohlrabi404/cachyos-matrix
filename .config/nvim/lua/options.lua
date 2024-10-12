@@ -30,4 +30,3 @@ o.scrolloff = 8
 o.smartindent = true
 o.autoindent = true
 
-vim.g.wiki_root = '~/wiki'

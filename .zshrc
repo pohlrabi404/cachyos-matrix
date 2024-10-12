@@ -41,7 +41,7 @@ function pconfig() {
 function pwiki() {
   eval $(ssh-agent -s)
   ssh-add $HOME/.ssh/id_wiki
-  cd $HOME/wiki/
+  cd $HOME/wiki/knowledge
 }
 
 #

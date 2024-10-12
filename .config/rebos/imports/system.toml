@@ -21,7 +21,7 @@ items = [
 #
 # Background
 #
-  "swaybg",
+  "swww",
 
 # 
 # Japanese font
@@ -66,5 +66,9 @@ items = [
 #
 # YouTube
 # 
-  "mpv"
+  "mpv",
+  "umpv",
+  "svp-bin",
+  "yt-dlp",
+
 ]

@@ -11,6 +11,12 @@ return {
         autoread = true
       })
       require('mini.splitjoin').setup()
+      require('mini.clue').setup({
+        triggers = {
+          { mode = 'n', keys = '<Leader>' },
+          { mode = 'x', keys = '<Leader>' },
+        },
+      })
     end
   },
 }

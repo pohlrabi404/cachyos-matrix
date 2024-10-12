@@ -86,3 +86,5 @@ EOF
 systemctl --global enable dbus.socket
 spicetify config current_theme Deary
 spicetify apply
+
+sudo chmod +x /usr/bin/dumpcap

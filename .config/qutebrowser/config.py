@@ -61,3 +61,4 @@ c.url.start_pages = [
         ]
 
 config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()', mode='insert')
+config.bind(';m', 'hint links spawn mpv {hint-url}')

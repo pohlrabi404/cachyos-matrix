@@ -42,8 +42,9 @@ shadow_inactive_color #00000000
 shadow_offset 0 0
 
 # Opacity
-for_window [all] opacity 0.95
+for_window [all] opacity 0.80
 for_window [title=".*YouTube.*"] opacity 1
+for_window [app_id="mpv"] opacity 1
 
 # inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
 default_dim_inactive 0.0
@@ -185,12 +186,13 @@ exec swaybg -i ~/backgrounds/matrix.png -m fill
     bindsym $mod+Shift+$right resize grow width 10px
 
 #### Startup
-#
+
 # Status Bar:
-#
 exec waybar &
 # Browser
 exec qutebrowser &
+# Music player
+exec nuclear &
 
 #### Behaviour
 #
@@ -199,10 +201,13 @@ exec qutebrowser &
     for_window [app_id=".*qutebrowser.*"] move to workspace 2
     assign [app_id=".*qutebrowser.*"] workspace 2
 
-    for_window [app_id=".*Alacritty.*"] move to workspace 1
-    assign [app_id=".*Alacritty.*"] workspace 1
+    for_window [title=".*mpv" app_id="mpv"] move to workspace 3
+    assign [title=".*mpv" app_id="mpv"] workspace 3
 
-    for_window [class="Spotify"] move to workspace 9
-    assign [class="Spotify"] workspace 9
+    for_window [title=".*yewtube" app_id="Alacritty"] move to workspace 3
+    assign [title=".*yewtube" app_id="Alacritty"] workspace 3
+
+    for_window [class="nuclear"] move to workspace 9
+    assign [class="nuclear"] workspace 9
 
 include /etc/sway/config.d/*

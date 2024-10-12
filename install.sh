@@ -42,7 +42,6 @@ cat | sudo tee /etc/keyd/default.conf << EOF
 *
 
 [main]
-shift = oneshot(shift)
 muhenkan = oneshot(meta)
 control = oneshot(control)
 
@@ -54,3 +53,4 @@ EOF
 xdg-settings set default-web-browser org.qutebrowser.qutebrowser.desktop
 
 sudo chmod +x /usr/bin/dumpcap
+sudo pacman -Rs cachy-browser

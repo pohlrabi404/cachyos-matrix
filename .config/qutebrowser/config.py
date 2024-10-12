@@ -43,6 +43,8 @@ c.colors.completion.even.bg = '#000000'
 c.colors.completion.odd.bg = '#000000'
 c.colors.completion.fg = '#00b000'
 
+c.colors.webpage.preferred_color_scheme = "dark"
+
 c.colors.hints.fg = '#009000'
 c.colors.hints.match.fg = '#00ff00'
 c.colors.hints.bg = '#000000'
@@ -61,4 +63,4 @@ c.url.start_pages = [
         ]
 
 config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()', mode='insert')
-config.bind(';m', 'hint links spawn mpv {hint-url}')
+config.bind(';m', 'hint links spawn umpv {hint-url}')

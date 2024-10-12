@@ -35,8 +35,13 @@ function szsh() {
 ### Config repo
 function pconfig() {
   eval $(ssh-agent -s) 
-  ssh-add $HOME/id_matrix
+  ssh-add $HOME/.ssh/id_matrix
   cd $HOME/dotfiles/pohlrabi/.config
+}
+function pwiki() {
+  eval $(ssh-agent -s)
+  ssh-add $HOME/.ssh/id_wiki
+  cd $HOME/wiki/
 }
 
 #

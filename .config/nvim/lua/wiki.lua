@@ -1,24 +1,13 @@
 -- Wiki templates
-local function TemplateFallback(context)
-    vim.api.nvim_buf_set_lines(0, 0, 0, false, {
-        '# ' .. context.name,
-        '',
-        'Foobar'
-    })
-end
-
 local wiki_templates = {
+    -- Use this when wanting to add new templates or something
     {
         match_re = 'index',
-        source_filename = '/home/user/templates/index.md'
-    },
-    {
-        match_re = 'foo',
-        source_filename = '.footemplate.md'
+        source_filename = '/home/pohlrabi/wiki/templates/index.md'
     },
     {
         match_func = function() return true end,  -- Always applies
-        source_func = TemplateFallback
+        source_filename = '/home/pohlrabi/wiki/templates/default.md' 
     }
 }
 

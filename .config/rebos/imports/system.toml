@@ -54,13 +54,6 @@ items = [
   "wireshark-qt",
 
 #
-# Spotify
-#
-  "spicetify-cli",
-  "spotify",
-  "spotblock-git",
-
-#
 # Matrix for funsie
 #
   "cmatrix",

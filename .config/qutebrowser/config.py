@@ -67,4 +67,4 @@ c.url.searchengines = {
 }
 
 config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()', mode='insert')
-config.bind(';m', 'hint links spawn umpv {hint-url}')
+config.bind(';f', 'hint links spawn --detach mpv {hint-url}')

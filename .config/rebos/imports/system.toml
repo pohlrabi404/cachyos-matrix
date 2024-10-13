@@ -71,4 +71,9 @@ items = [
   "svp-bin",
   "yt-dlp",
 
+#
+# Image Viewer
+#
+  "vimiv-qt",
+
 ]

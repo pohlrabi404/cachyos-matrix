@@ -61,6 +61,10 @@ c.url.start_pages = [
         'https://discord.com/channels/@me',
         'https://start.duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1'
         ]
+c.url.searchengines = {
+        'DEFAULT': 'https://duckduckgo.com/?q={}',
+        '!yt': 'https://www.youtube.com/results?search_query={}',
+}
 
 config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()', mode='insert')
 config.bind(';m', 'hint links spawn umpv {hint-url}')

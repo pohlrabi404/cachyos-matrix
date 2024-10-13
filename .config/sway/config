@@ -50,9 +50,6 @@ for_window [all] opacity 0.80
 for_window [title=".*YouTube.*"] opacity 1
 for_window [app_id="mpv"] opacity 1
 
-# Float default
-for_window [app_id="mpv"] floating enable
-
 # inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
 default_dim_inactive 0.0
 dim_inactive_colors.unfocused #000000FF
@@ -178,7 +175,7 @@ exec swww-daemon & swww img $HOME/backgrounds/matrix.gif
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+Tab focus mode_toggle
 #
 # Resizing containers:
 #
@@ -212,5 +209,9 @@ exec nuclear &
 
     for_window [class="nuclear"] move to workspace 9
     assign [class="nuclear"] workspace 9
+
+# Float default
+    for_window [app_id="mpv"] sticky enable
+    for_window [app_id="mpv"] exec ~/test.sh 
 
 include /etc/sway/config.d/*

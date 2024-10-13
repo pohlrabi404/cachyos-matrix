@@ -18,19 +18,19 @@ badd +17 nvim/lua/plugins/mini.lua
 badd +1 nvim/lua/configs/lazy.lua
 badd +1 ~/wiki/knowledge/index.md
 badd +3 nvim/lua/plugins/telescope.lua
-badd +50 sway/config
+badd +214 sway/config
 badd +71 rebos/imports/system.toml
 badd +13 nvim/lua/keybinds.lua
 badd +30 waybar/config
-badd +47 qutebrowser/config.py
-badd +150 mpv/mpv.conf
+badd +64 qutebrowser/config.py
+badd +40 mpv/mpv.conf
 badd +79 mpv/input.conf
 badd +7 ~/wiki/knowledge/journal/2024-10-13.md
 argglobal
 %argdel
-edit mpv/mpv.conf
+edit qutebrowser/config.py
 argglobal
-balt ~/wiki/knowledge/index.md
+balt mpv/mpv.conf
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -41,12 +41,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 2 - ((1 * winheight(0) + 20) / 41)
+let s:l = 65 - ((27 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
-normal! 02|
+keepjumps 65
+normal! 050|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

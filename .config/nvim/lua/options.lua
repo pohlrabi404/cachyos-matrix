@@ -16,6 +16,9 @@ o.expandtab = true
 
 -- Line wrap
 o.wrap = true
+o.breakindent = true
+o.textwidth = 80
+o.linebreak = true
 
 -- Cursor
 o.cursorline = true
@@ -29,4 +32,3 @@ o.scrolloff = 8
 -- Indent
 o.smartindent = true
 o.autoindent = true
-

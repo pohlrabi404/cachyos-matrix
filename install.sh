@@ -54,3 +54,7 @@ xdg-settings set default-web-browser org.qutebrowser.qutebrowser.desktop
 
 sudo chmod +x /usr/bin/dumpcap
 sudo pacman -Rs cachy-browser
+
+# bluetooth
+sudo systemctl enable bluetooth
+sudo systemctl start bluetooth

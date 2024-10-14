@@ -23,16 +23,19 @@ badd +71 rebos/imports/system.toml
 badd +13 nvim/lua/keybinds.lua
 badd +30 waybar/config
 badd +70 qutebrowser/config.py
-badd +5 ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
+badd +1 ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
 badd +79 mpv/input.conf
 badd +7 ~/wiki/knowledge/journal/2024-10-13.md
 badd +124 qutebrowser/greasemonkey/ad.js
 badd +657 mpv/tech-overview.txt
 badd +93 mpv/mplayer-input.conf
+badd +21 nvim/lua/wiki.lua
+badd +0 nvim/lua/options.lua
 argglobal
 %argdel
-edit ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
+edit nvim/lua/options.lua
 argglobal
+balt nvim/lua/wiki.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -43,12 +46,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 5 - ((4 * winheight(0) + 20) / 41)
+let s:l = 21 - ((20 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 5
-normal! 06|
+keepjumps 21
+normal! 018|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -62,7 +65,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

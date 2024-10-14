@@ -1,3 +1,4 @@
+local g = vim.g
 -- Wiki templates
 local wiki_templates = {
     -- Use this when wanting to add new templates or something
@@ -11,6 +12,12 @@ local wiki_templates = {
     }
 }
 -- Set the wiki templates in the global variable
-vim.g.wiki_templates = wiki_templates
+g.wiki_templates = wiki_templates
+g.wiki_root = '~/wiki/knowledge'
+g.wiki_select_method = {
+  pages = require('wiki.telescope').pages,
+  tags = require('wiki.telescope').tags,
+  toc = require('wiki.telescope').toc,
+  links = require('wiki.telescope').links,
+}
 
-vim.g.wiki_root = '~/wiki/knowledge'

@@ -6,6 +6,7 @@ items = [
   "keyd",
   "neovim",
   "swayfx",
+  "luarocks",
 
 #
 # Browser
@@ -76,4 +77,8 @@ items = [
 #
   "vimiv-qt",
 
+#
+# Note taking
+#
+  "obsidian"
 ]

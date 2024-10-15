@@ -1,5 +1,10 @@
+-- package manager
 require("configs.lazy")
-require("keybinds")
-require("options")
-require("theme")
-require("wiki")
+-- require("installs.plugins")
+require("auto-plugins")
+
+-- general setting
+require("settings.keybinds")
+require("settings.options")
+require("settings.theme")
+

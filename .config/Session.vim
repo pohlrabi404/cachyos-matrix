@@ -13,29 +13,31 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +1 nvim/init.lua
+badd +4 nvim/init.lua
 badd +9 nvim/lua/plugins/mini.lua
-badd +1 nvim/lua/configs/lazy.lua
+badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/lazy.lua
 badd +1 ~/wiki/knowledge/index.md
-badd +3 nvim/lua/plugins/telescope.lua
+badd +26 nvim/lua/plugins/telescope.lua
 badd +214 sway/config
 badd +71 rebos/imports/system.toml
-badd +13 nvim/lua/keybinds.lua
+badd +2 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/keybinds.lua
 badd +30 waybar/config
 badd +70 qutebrowser/config.py
-badd +1 ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
+badd +4 ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
 badd +79 mpv/input.conf
 badd +7 ~/wiki/knowledge/journal/2024-10-13.md
 badd +124 qutebrowser/greasemonkey/ad.js
 badd +657 mpv/tech-overview.txt
 badd +93 mpv/mplayer-input.conf
-badd +21 nvim/lua/wiki.lua
-badd +0 nvim/lua/options.lua
+badd +34 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/options.lua
+badd +4 nvim/lazy-lock.json
+badd +1 nvim/lua/plugins/init
+badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/theme.lua
 argglobal
 %argdel
-edit nvim/lua/options.lua
+edit ~/dotfiles/pohlrabi/.config/nvim/lua/settings/keybinds.lua
 argglobal
-balt nvim/lua/wiki.lua
+balt ~/dotfiles/pohlrabi/.config/nvim/lua/settings/options.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -46,12 +48,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 21 - ((20 * winheight(0) + 20) / 41)
+let s:l = 2 - ((1 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 21
-normal! 018|
+keepjumps 2
+normal! 02|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -65,6 +67,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

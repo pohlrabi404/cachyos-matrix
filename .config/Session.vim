@@ -20,7 +20,7 @@ badd +1 ~/wiki/knowledge/index.md
 badd +26 nvim/lua/plugins/telescope.lua
 badd +214 sway/config
 badd +71 rebos/imports/system.toml
-badd +2 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/keybinds.lua
+badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/keybinds.lua
 badd +30 waybar/config
 badd +70 qutebrowser/config.py
 badd +4 ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
@@ -33,11 +33,13 @@ badd +34 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/options.lua
 badd +4 nvim/lazy-lock.json
 badd +1 nvim/lua/plugins/init
 badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/theme.lua
+badd +23 nvim/lua/plugins/installs.lua
+badd +31 nvim/lua/configs/lazy.lua
 argglobal
 %argdel
-edit ~/dotfiles/pohlrabi/.config/nvim/lua/settings/keybinds.lua
+edit nvim/lua/plugins/installs.lua
 argglobal
-balt ~/dotfiles/pohlrabi/.config/nvim/lua/settings/options.lua
+balt nvim/lua/configs/lazy.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -48,12 +50,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 2 - ((1 * winheight(0) + 9) / 19)
+let s:l = 23 - ((22 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
-normal! 02|
+keepjumps 23
+normal! 06|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

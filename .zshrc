@@ -38,10 +38,15 @@
     ssh-add $HOME/.ssh/id_matrix
     cd $HOME/dotfiles/pohlrabi/.config
   }
-  function pwiki() {
+  # function pwiki() {
+  #   eval $(ssh-agent -s)
+  #   ssh-add $HOME/.ssh/id_wiki
+  #   cd $HOME/wiki/knowledge
+  # }
+  function pobsidian() {
     eval $(ssh-agent -s)
-    ssh-add $HOME/.ssh/id_wiki
-    cd $HOME/wiki/knowledge
+    ssh-add $HOME/.ssh/id_obsidian
+    cd $HOME/vaults/
   }
 
 #

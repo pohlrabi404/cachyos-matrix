@@ -11,8 +11,8 @@ local function get_lua_file_names(folder_path)
     f:close()
     return lua_file_names
 end
-local plugins_path = "$HOME/.config/nvim/lua/installs"
+local plugins_path = "$HOME/.config/nvim/lua/plugins"
 local plugins = get_lua_file_names(plugins_path)
 for _, name in ipairs(plugins) do
-  require("installs." .. name)
+  require("plugins." .. name)
 end

@@ -11,4 +11,7 @@ set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>')
 set('n', '<leader>fb', '<cmd>Telescope buffers<CR>') 
 set('n', '<Esc>', '<cmd>nohlsearch<CR><Esc>' , { noremap = true })
 set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
-set('n', '<leader>wf', '<cmd>WikiPages<cr>')
+
+-- Obsidian specific
+set('n', ';b', '<cmd>ObsidianBacklinks<CR>')
+set('n', ';n', '<cmd>ObsidianNew<CR>')

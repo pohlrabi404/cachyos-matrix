@@ -7,4 +7,3 @@ require("auto-plugins")
 require("settings.keybinds")
 require("settings.options")
 require("settings.theme")
-

@@ -24,5 +24,32 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-  }
+  },
+  {
+    "RRethy/base16-nvim"
+  },
+
+  -- Obsidian
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",  -- recommended, use latest release instead of latest commit
+    lazy = true,
+    ft = "markdown",
+    dependencies = {"nvim-lua/plenary.nvim"},
+  },
+
+  -- Treesitter
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+
+  -- Completions
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = {'saadparwaiz1/cmp_luasnip'}
+  },
+  {
+    "hrsh7th/nvim-cmp"
+  },
 }

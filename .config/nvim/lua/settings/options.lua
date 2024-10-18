@@ -32,3 +32,6 @@ o.scrolloff = 8
 -- Indent
 o.smartindent = true
 o.autoindent = true
+
+-- Concealing format
+o.conceallevel = 1

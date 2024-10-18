@@ -211,6 +211,7 @@ exec nuclear &
     assign [class="nuclear"] workspace 9
 
 # Float default
+    for_window [app_id="mpv"] move to workspace 3 
     for_window [app_id="mpv"] sticky enable
     for_window [app_id="mpv"] exec ~/test.sh 
 

@@ -13,42 +13,16 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +4 nvim/init.lua
-badd +9 ~/dotfiles/pohlrabi/.config/nvim/lua/install/mini.lua
-badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/lazy.lua
-badd +1 ~/wiki/knowledge/index.md
-badd +26 ~/dotfiles/pohlrabi/.config/nvim/lua/install/telescope.lua
-badd +208 sway/config
-badd +71 rebos/imports/system.toml
-badd +17 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/keybinds.lua
-badd +30 waybar/config
-badd +70 qutebrowser/config.py
-badd +5 ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
-badd +79 mpv/input.conf
-badd +7 ~/wiki/knowledge/journal/2024-10-13.md
-badd +124 qutebrowser/greasemonkey/ad.js
-badd +657 mpv/tech-overview.txt
-badd +93 mpv/mplayer-input.conf
-badd +37 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/options.lua
-badd +4 nvim/lazy-lock.json
-badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/install/init
-badd +1 ~/dotfiles/pohlrabi/.config/nvim/lua/settings/theme.lua
-badd +52 ~/dotfiles/pohlrabi/.config/nvim/lua/install/installs.lua
-badd +32 nvim/lua/configs/lazy.lua
-badd +37 ~/dotfiles/pohlrabi/.config/nvim/lua/plugins/obsidian.lua
-badd +1 ~/vaults/wiki/1729081227-USPT.md
-badd +20 ~/dotfiles/pohlrabi/.config/nvim/lua/plugins/mini.lua
-badd +18 ~/dotfiles/pohlrabi/.config/nvim/lua/plugins/theme.lua
-badd +5 ~/dotfiles/pohlrabi/.config/nvim/lua/plugins/telescope.lua
-badd +18 nvim/lua/auto-plugins.lua
-badd +33 nvim/lua/plugins/completions.lua
-badd +2 man://local(n)
-badd +47 qutebrowser/greasemonkey/yt-adblock.js
+badd +23 nvim/lua/settings/keybinds.lua
+badd +23 nvim/lua/plugins/telescope.lua
+badd +14 nvim/lua/settings/options.lua
+badd +1 nvim/lua/settings/theme.lua
+badd +8 nvim/init.lua
 argglobal
 %argdel
-edit ~/dotfiles/pohlrabi/.config/mpv/mpv.conf
+edit nvim/init.lua
 argglobal
-balt sway/config
+balt nvim/lua/settings/options.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -59,11 +33,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 17 - ((14 * winheight(0) + 20) / 41)
+let s:l = 7 - ((6 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
+keepjumps 7
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

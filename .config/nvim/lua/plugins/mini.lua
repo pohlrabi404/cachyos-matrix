@@ -18,3 +18,4 @@ require('mini.clue').setup({
     { mode = 'x', keys = '<Leader>' },
   },
 })
+require('mini.surround').setup()

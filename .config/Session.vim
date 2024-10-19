@@ -17,12 +17,13 @@ badd +23 nvim/lua/settings/keybinds.lua
 badd +23 nvim/lua/plugins/telescope.lua
 badd +14 nvim/lua/settings/options.lua
 badd +1 nvim/lua/settings/theme.lua
-badd +8 nvim/init.lua
+badd +9 nvim/init.lua
+badd +20 nvim/lua/plugins/mini.lua
 argglobal
 %argdel
-edit nvim/init.lua
+edit nvim/lua/settings/keybinds.lua
 argglobal
-balt nvim/lua/settings/options.lua
+balt nvim/lua/plugins/mini.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -33,12 +34,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 7 - ((6 * winheight(0) + 20) / 41)
+let s:l = 25 - ((24 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
-normal! 0
+keepjumps 25
+normal! 027|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

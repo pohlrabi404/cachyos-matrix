@@ -18,4 +18,8 @@ require('mini.clue').setup({
     { mode = 'x', keys = '<Leader>' },
   },
 })
-require('mini.surround').setup()
+require('mini.surround').setup({
+  custom_surroundings = {
+    [';'] = { output = { left = '[', right = ']'} },
+  },
+})

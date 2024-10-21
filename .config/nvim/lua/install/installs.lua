@@ -52,4 +52,9 @@ return {
   {
     "hrsh7th/nvim-cmp"
   },
+  
+  -- Image in neovim
+  {
+    "edluffy/hologram.nvim",
+  },
 }

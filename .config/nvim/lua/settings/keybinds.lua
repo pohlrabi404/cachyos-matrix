@@ -9,6 +9,7 @@ end
 -- Default keybinds
 set('n', '<Esc>', '<cmd>nohlsearch<CR><Esc>' , { noremap = true })
 set('i', '<Tab>', [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
+set('n', ';c', "<cmd>s/\\<./\\u&/g<CR><cmd>nohlsearch<CR>")
 
 -- Telescope
 set('n', '<leader>ff', '<cmd>Telescope file_browser path=%:p:h select_buffer=false<CR>')
@@ -21,6 +22,7 @@ set('n', ';n', '<cmd>ObsidianNew<CR>')
 set('n', ';o', '<cmd>ObsidianOpen<CR>')
 set('n', ';s', '<cmd>ObsidianSearch<CR>')
 set('n', ';i', '<cmd>ObsidianPasteImg<CR>')
+set('n', ';f', '<cmd>ObsidianFollowLink<CR>')
 set('v', ';l', function()
 	vim.api.nvim_input("sa;%%i<Tab>")
 	require("cmp").complete()

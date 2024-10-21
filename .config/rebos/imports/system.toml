@@ -71,6 +71,7 @@ items = [
   "umpv",
   "svp-bin",
   "yt-dlp",
+  "yewtube",
 
 #
 # Image Viewer
@@ -80,5 +81,7 @@ items = [
 #
 # Note taking
 #
-  "obsidian"
+  "obsidian",
+  
+  "kitty"
 ]

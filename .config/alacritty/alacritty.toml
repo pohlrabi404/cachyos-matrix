@@ -1,7 +1,0 @@
-[window.padding]
-x = 5
-y = 5
-
-[colors.primary]
-foreground = "#00b000"
-background = "#000000"

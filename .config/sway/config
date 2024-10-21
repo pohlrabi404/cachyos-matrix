@@ -10,7 +10,7 @@ set $up k
 set $right l
 
 # Terminal
-set $term alacritty
+set $term kitty
 # App launcher 
 set $menu wofi --show drun 
 # Font
@@ -214,6 +214,7 @@ exec nuclear &
     for_window [app_id="mpv"] move to workspace 3 
     for_window [app_id="mpv"] resize set 576 324 
     for_window [app_id="mpv"] sticky enable
-    for_window [app_id="mpv"] exec ~/test.sh 
+    for_window [app_id="mpv"] floating enable
+    for_window [app_id="mpv"] exec ~/.config/mpv/mpv.sh
 
 include /etc/sway/config.d/*

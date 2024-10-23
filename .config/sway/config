@@ -30,9 +30,9 @@ client.focused #000000 #000000 #000000 #00b000 #00b000
 
 # Window background blur
 blur on 
-blur_xray on 
-blur_passes 8
-blur_radius 2
+blur_xray disable 
+blur_passes 1
+blur_radius 10
 blur_noise 0.02
 blur_brightness 0.9
 blur_contrast 0.9
@@ -195,7 +195,7 @@ exec waybar &
 # Browser
 exec qutebrowser &
 # Music player
-exec nuclear &
+# exec nuclear &
 
 #### Behaviour
 #
@@ -204,17 +204,14 @@ exec nuclear &
     for_window [app_id=".*qutebrowser.*"] move to workspace 2
     assign [app_id=".*qutebrowser.*"] workspace 2
 
-    # for_window [title=".*mpv" app_id="mpv"] move to workspace 2
-    # assign [title=".*mpv" app_id="mpv"] workspace 2
-
-    for_window [class="nuclear"] move to workspace 9
-    assign [class="nuclear"] workspace 9
+    # for_window [class="nuclear"] move to workspace 9
+    # assign [class="nuclear"] workspace 9
 
 # Float default
     for_window [app_id="mpv"] move to workspace 3 
     for_window [app_id="mpv"] resize set 576 324 
     for_window [app_id="mpv"] sticky enable
     for_window [app_id="mpv"] floating enable
-    for_window [app_id="mpv"] exec ~/.config/mpv/mpv.sh
+    for_window [app_id="mpv"] exec /home/pohlrabi/.config/mpv/mpv.sh
 
 include /etc/sway/config.d/*

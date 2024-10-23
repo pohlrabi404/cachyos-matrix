@@ -2,12 +2,12 @@ require("obsidian").setup({
   workspaces = {
     {
       name = "wiki",
-      path = "~/vaults/wiki"
+      path = "~/vaults/wiki",
+      overrides = {
+        notes_subdir = "knowledge",
+        new_notes_location = "notes_subdir",
+      },
     },
-    {
-      name = "workplace",
-      path = "~/vaults/workplace"
-    }
   },
   -- Id generate
   note_id_func = function(title)
@@ -45,4 +45,11 @@ require("obsidian").setup({
 
     return out
   end,
+
+  -- Save when open new note
+  callbacks = {
+    leave_note = function(client, note)
+      note:save()
+    end,
+  },
 })

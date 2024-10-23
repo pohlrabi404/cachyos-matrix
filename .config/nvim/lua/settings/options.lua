@@ -24,7 +24,7 @@ o.linebreak = true
 o.cursorline = true
 
 -- Use system clipboard
-o.clipboard = unnamedplus
+o.clipboard = "unnamedplus"
 
 -- Scroll-off, space at top and bottom
 o.scrolloff = 8
@@ -34,4 +34,4 @@ o.smartindent = true
 o.autoindent = true
 
 -- Concealing format
-o.conceallevel = 1
+o.conceallevel = 2

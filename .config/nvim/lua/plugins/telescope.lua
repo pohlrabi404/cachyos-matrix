@@ -31,7 +31,7 @@ TelescopeBuffer = function()
         end)
       end
 
-      map('n', '<c-d>', delete_buf)
+      map('n', 'd', delete_buf)
 
       return true
     end

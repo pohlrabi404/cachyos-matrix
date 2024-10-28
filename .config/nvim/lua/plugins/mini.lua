@@ -20,6 +20,6 @@ require('mini.clue').setup({
 })
 require('mini.surround').setup({
   custom_surroundings = {
-    [';'] = { output = { left = '[', right = ']'} },
+    [';'] = { output = { left = '[[', right = ']]'} },
   },
 })

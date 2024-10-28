@@ -71,4 +71,9 @@ return {
 	{
 		"nvimtools/none-ls.nvim",
 	},
+
+  -- Autosave
+  {
+    "Pocco81/auto-save.nvim",
+  },
 }

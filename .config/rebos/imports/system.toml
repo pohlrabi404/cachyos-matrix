@@ -7,6 +7,7 @@ items = [
   "neovim",
   "swayfx",
   "luarocks",
+  "dunst",
 
 #
 # Browser
@@ -71,7 +72,7 @@ items = [
   "umpv",
   "svp-bin",
   "yt-dlp",
-  "yewtube",
+  "zenity",
 
 #
 # Image Viewer

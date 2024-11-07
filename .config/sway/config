@@ -46,7 +46,7 @@ shadow_inactive_color #00000000
 shadow_offset 0 0
 
 # Opacity
-for_window [all] opacity 0.80
+for_window [all] opacity 0.90
 for_window [title=".*YouTube.*"] opacity 1
 for_window [app_id="mpv"] opacity 1
 

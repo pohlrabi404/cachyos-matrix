@@ -37,6 +37,10 @@ return {
 		ft = "markdown",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+  -- Wiki
+  {
+    "lervag/wiki.vim",
+  },
 
 	-- Treesitter
 	{

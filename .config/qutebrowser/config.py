@@ -59,7 +59,7 @@ c.hints.border = '1px solid #00f000'
 
 c.url.start_pages = [
         'https://discord.com/channels/@me',
-        'https://start.duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1'
+        'https://copilot.microsoft.com/chats/',
         ]
 c.url.searchengines = {
         'DEFAULT': 'https://duckduckgo.com/?q={}',
@@ -68,3 +68,5 @@ c.url.searchengines = {
 
 config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()', mode='insert')
 config.bind(';f', 'hint links spawn --detach mpv {hint-url}')
+
+config.set("input.mode_override", "passthrough", "https://colab.research.google.com")

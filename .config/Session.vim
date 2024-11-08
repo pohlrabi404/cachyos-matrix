@@ -18,20 +18,22 @@ badd +2 nvim/lua/settings/options.lua
 badd +1 nvim/lua/plugins/obsidian.lua
 badd +74 nvim/lua/plugins/wiki.lua
 badd +34 nvim/lua/install/installs.lua
-badd +48 sway/config
+badd +4 sway/config
 badd +2 nvim/lua/plugins/auto-save.lua
 badd +10 nvim/lua/plugins/telescope.lua
 badd +2 qutebrowser/quickmarks
-badd +52 qutebrowser/config.py
+badd +3 qutebrowser/config.py
 badd +1 mpv/scripts/pause-indicator.lua
 badd +28 mpv/scripts/youtube-upnext.lua
 badd +1456 ~/dotfiles/pohlrabi/.config/mpv/scripts/playlistmanager.lua
-badd +5 mpv/mpv.conf
+badd +6 mpv/mpv.conf
+badd +23 mpv/scripts/ytsub.lua
+badd +16 waybar/config
 argglobal
 %argdel
 edit qutebrowser/config.py
 argglobal
-balt mpv/mpv.conf
+balt waybar/config
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -42,12 +44,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 67 - ((40 * winheight(0) + 23) / 46)
+let s:l = 33 - ((26 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 67
-normal! 0
+keepjumps 33
+normal! 010|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

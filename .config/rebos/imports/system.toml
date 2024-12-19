@@ -84,5 +84,11 @@ items = [
 #
   "obsidian",
   
-  "kitty"
+  "kitty",
+
+# Steam
+  "steam",
+
+# PINCE
+  "pince-git",
 ]

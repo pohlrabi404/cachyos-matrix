@@ -70,3 +70,4 @@ config.bind('<Escape>', 'mode-leave ;; jseval -q document.activeElement.blur()',
 config.bind(';f', 'hint links spawn --detach mpv {hint-url}')
 
 config.set("input.mode_override", "passthrough", "https://colab.research.google.com")
+config.set("input.mode_override", "passthrough", "https://www.kaggle.com")

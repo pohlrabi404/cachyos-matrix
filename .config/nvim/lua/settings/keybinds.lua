@@ -35,3 +35,6 @@ set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { silent = false })
 set("n", "gd", vim.lsp.buf.definition)
 set("n", "H", vim.lsp.buf.hover)
 set("n", "gf", vim.lsp.buf.format)
+
+-- Quick Math
+set("n", "qm", "<cmd>QuickMath<CR>")

@@ -13,29 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +0 rebos/managers/system.toml
-badd +22 nvim/lua/settings/keybinds.lua
-badd +2 nvim/lua/settings/options.lua
-badd +1 nvim/lua/plugins/obsidian.lua
-badd +74 nvim/lua/plugins/wiki.lua
-badd +34 nvim/lua/install/installs.lua
-badd +218 sway/config
-badd +2 nvim/lua/plugins/auto-save.lua
-badd +10 nvim/lua/plugins/telescope.lua
-badd +2 qutebrowser/quickmarks
-badd +73 qutebrowser/config.py
-badd +1 mpv/scripts/pause-indicator.lua
-badd +28 mpv/scripts/youtube-upnext.lua
-badd +1456 ~/dotfiles/pohlrabi/.config/mpv/scripts/playlistmanager.lua
-badd +4 mpv/mpv.conf
-badd +23 mpv/scripts/ytsub.lua
-badd +16 waybar/config
-badd +1 ~/Downloads/2024-11-24-kumagaya-news-text.txt
+badd +1 nvim/lua/plugins/telescope.lua
+badd +17 nvim/lua/plugins/quickmath.lua
+badd +39 nvim/lua/settings/keybinds.lua
 argglobal
 %argdel
-edit rebos/managers/system.toml
+edit nvim/lua/plugins/quickmath.lua
 argglobal
-balt rebos/managers/system.toml
+balt nvim/lua/settings/keybinds.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -46,12 +31,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 6 - ((5 * winheight(0) + 23) / 46)
+let s:l = 21 - ((20 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 6
-normal! 0
+keepjumps 21
+normal! 033|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

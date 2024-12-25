@@ -119,11 +119,8 @@ vim.g.molten_virt_text_output = true
 -- this will make it so the output shows up below the \`\`\` cell delimiter
 vim.g.molten_virt_lines_off_by_1 = true
 
-vim.keymap.set("n", "<leader>oh", ":moltenhideoutput<cr>", { desc = "close output window", silent = true })
-vim.keymap.set("n", "<leader>md", ":moltendelete<cr>", { desc = "delete molten cell", silent = true })
-
--- if you work with html outputs:
-vim.keymap.set("n", "<leader>mx", ":moltenopeninbrowser<cr>", { desc = "open output in browser", silent = true })
+vim.keymap.set("n", "<leader>oh", ":MoltenHideOutput<cr>", { desc = "close output window", silent = true })
+vim.keymap.set("n", "<leader>md", ":MoltenDelete<cr>", { desc = "delete molten cell", silent = true })
 
 local runner = require("quarto.runner")
 vim.keymap.set("n", ";rc", runner.run_cell, { desc = "run cell", silent = true })
@@ -141,7 +138,7 @@ end, { silent = true, noremap = true })
 -- falls back to a kernel that matches the name of the active venv (if any)
 local imb = function(e) -- init molten buffer
 	vim.schedule(function()
-		local kernels = vim.fn.moltenavailablekernels()
+		local kernels = vim.fn.MoltenAvailableKernels()
 		local try_kernel_name = function()
 			local metadata = vim.json.decode(io.open(e.file, "r"):read("a"))["metadata"]
 			return metadata.kernelspec.name
@@ -155,9 +152,9 @@ local imb = function(e) -- init molten buffer
 			end
 		end
 		if kernel_name ~= nil and vim.tbl_contains(kernels, kernel_name) then
-			vim.cmd(("molteninit %s"):format(kernel_name))
+			vim.cmd(("MoltenInit %s"):format(kernel_name))
 		end
-		vim.cmd("moltenimportoutput")
+		vim.cmd("MoltenImportOutput")
 	end)
 end
 
@@ -235,7 +232,7 @@ local function new_notebook(filename)
 	end
 end
 
-vim.api.nvim_create_user_command("newnotebook", function(opts)
+vim.api.nvim_create_user_command("NewNoteBook", function(opts)
 	new_notebook(opts.args)
 end, {
 	nargs = 1,

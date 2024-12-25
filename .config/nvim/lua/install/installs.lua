@@ -37,15 +37,20 @@ return {
 		ft = "markdown",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-  -- Wiki
-  {
-    "lervag/wiki.vim",
-  },
+	-- Wiki
+	{
+		"lervag/wiki.vim",
+	},
 
 	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
 	},
 
 	-- Completions
@@ -53,12 +58,12 @@ return {
 		"L3MON4D3/LuaSnip",
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
-      "rafamadriz/friendly-snippets"
+			"rafamadriz/friendly-snippets",
 		},
 	},
 	{
 		"hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp"
+		"hrsh7th/cmp-nvim-lsp",
 	},
 
 	-- Image in neovim
@@ -76,8 +81,38 @@ return {
 		"nvimtools/none-ls.nvim",
 	},
 
-  -- Autosave
-  {
-    "Pocco81/auto-save.nvim",
-  },
+	-- Molten for jupyterlab
+	{
+		"benlubas/molten-nvim",
+		dependencies = { "3rd/image.nvim" },
+		build = ":UpdateRemotePlugins",
+	},
+	{
+		{
+			"vhyrro/luarocks.nvim",
+			priority = 1001, -- this plugin needs to run before anything else
+			opts = {
+				rocks = { "magick" },
+			},
+		},
+		{
+			"3rd/image.nvim",
+			dependencies = { "luarocks.nvim" },
+			opts = {},
+		},
+	},
+	{
+		"quarto-dev/quarto-nvim",
+		dependencies = {
+			"jmbuhr/otter.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		ft = { "quarto", "markdown" },
+	},
+	{
+		"GCBallesteros/jupytext.nvim",
+		config = true,
+		-- Depending on your nvim distro or config you may need to make the loading not lazy
+		-- lazy=false,
+	},
 }

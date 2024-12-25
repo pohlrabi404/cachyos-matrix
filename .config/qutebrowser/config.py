@@ -59,7 +59,7 @@ c.hints.border = '1px solid #00f000'
 
 c.url.start_pages = [
         'https://discord.com/channels/@me',
-        'https://copilot.microsoft.com/chats/',
+        'https://chat.deepseek.com/'
         ]
 c.url.searchengines = {
         'DEFAULT': 'https://duckduckgo.com/?q={}',

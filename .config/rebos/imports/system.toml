@@ -85,6 +85,7 @@ items = [
   "obsidian",
   
   "kitty",
+  "imagemagick",
 
 # Steam
   "steam",

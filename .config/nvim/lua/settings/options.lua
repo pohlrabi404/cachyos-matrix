@@ -34,4 +34,7 @@ o.smartindent = true
 o.autoindent = true
 
 -- Concealing format
-o.conceallevel = 2
+-- o.conceallevel = 1
+
+-- Hide ~
+vim.cmd([[ highlight NonText guifg=bg ]])

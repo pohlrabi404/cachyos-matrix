@@ -1,4 +1,4 @@
-require('hologram').setup({
-  auto_display = true,
-  silent = true,
+require("hologram").setup({
+	auto_display = true,
+	silent = true,
 })

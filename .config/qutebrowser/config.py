@@ -1,3 +1,7 @@
+from qutebrowser.config.configfiles import ConfigAPI  # noqa: F401
+from qutebrowser.config.config import ConfigContainer  # noqa: F401
+config: ConfigAPI = config  # noqa: F821 pylint: disable=E0602,C0103
+c: ConfigContainer = c  # noqa: F821 pylint: disable=E0602,C0103
 config.load_autoconfig(False)
 
 c.tabs.position = "right"
@@ -44,6 +48,8 @@ c.colors.completion.odd.bg = '#000000'
 c.colors.completion.fg = '#00b000'
 
 c.colors.webpage.preferred_color_scheme = "dark"
+c.colors.webpage.darkmode.policy.images = "smart-simple"
+c.colors.webpage.darkmode.enabled = True
 
 c.colors.hints.fg = '#009000'
 c.colors.hints.match.fg = '#00ff00'

@@ -25,6 +25,11 @@ items = [
 #
   "swww",
 
+#
+# Font
+#
+  "ttf-cmu-serif",
+
 # 
 # Japanese font
 #

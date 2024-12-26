@@ -13,6 +13,16 @@ require("lspconfig").lua_ls.setup({
 })
 require("lspconfig").pyright.setup({
 	capabilities = capabilities,
+	settings = {
+		python = {
+			analysis = {
+        typeCheckingMode = "off",
+				diagnosticSeverityOverrides = {
+					reportUnusedExpression = "none",
+				},
+			},
+		},
+	},
 })
 
 -- Add linter and formatter

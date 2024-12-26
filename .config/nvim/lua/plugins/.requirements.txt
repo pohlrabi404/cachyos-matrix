@@ -1,0 +1,3 @@
+pynvim
+jupyter_client
+jupytext

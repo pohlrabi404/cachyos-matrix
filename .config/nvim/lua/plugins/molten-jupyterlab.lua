@@ -1,4 +1,4 @@
--- Check if .requirements.txt exists
+vim.g.python3_host_prog=vim.fn.expand("$HOME/.config/nvim/lua/plugins/.virtualenv/molten/bin/python3")
 if vim.fn.filereadable(".requirements.txt") == 1 and vim.fn.isdirectory(".virtualenv") == 0 then
   local result = vim.fn.system([[
     python3 -m venv .virtualenv/molten
@@ -166,7 +166,7 @@ local default_notebook = [[
      "kernelspec": {
       "display_name": "Python 3",
       "language": "python",
-      "name": "python3"
+      "name": ""
      },
      "language_info": {
       "codemirror_mode": {
@@ -202,3 +202,15 @@ end, {
   nargs = 1,
   complete = 'file'
 })
+
+vim.keymap.set("n", "<leader>ip", function()
+  local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+  if venv ~= nil then
+    -- in the form of /home/benlubas/.virtualenvs/VENV_NAME
+    venv = string.match(venv, "/.+/(.+)")
+    vim.cmd(("MoltenInit %s"):format(venv))
+  else
+    vim.cmd("MoltenInit python3")
+  end
+end, { desc = "Initialize Molten for python3", silent = true })
+

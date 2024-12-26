@@ -39,7 +39,7 @@ null_ls.setup({
 
 -- Treesitter highlighting
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "markdown", "markdown_inline", "python" },
+	ensure_installed = { "latex", "markdown", "markdown_inline", "python", "html" },
 	highlight = {
 		enable = true, -- Enable syntax highlighting
 		additional_vim_regex_highlighting = false, -- Disable legacy regex-based highlighting

@@ -30,17 +30,17 @@ return {
 	},
 
 	-- Obsidian
-	{
-		"epwalsh/obsidian.nvim",
-		version = "*", -- recommended, use latest release instead of latest commit
-		lazy = true,
-		ft = "markdown",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	-- Wiki
-	{
-		"lervag/wiki.vim",
-	},
+	-- {
+	-- 	"epwalsh/obsidian.nvim",
+	-- 	version = "*", -- recommended, use latest release instead of latest commit
+	-- 	lazy = true,
+	-- 	ft = "markdown",
+	-- 	dependencies = { "nvim-lua/plenary.nvim" },
+	-- },
+	-- -- Wiki
+	-- {
+	-- 	"lervag/wiki.vim",
+	-- },
 
 	-- Treesitter
 	{
@@ -66,11 +66,6 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 	},
 
-	-- Image in neovim
-	{
-		"edluffy/hologram.nvim",
-	},
-
 	-- Mason
 	{
 		"williamboman/mason.nvim",
@@ -88,18 +83,9 @@ return {
 		build = ":UpdateRemotePlugins",
 	},
 	{
-		{
-			"vhyrro/luarocks.nvim",
-			priority = 1001, -- this plugin needs to run before anything else
-			opts = {
-				rocks = { "magick" },
-			},
-		},
-		{
-			"3rd/image.nvim",
-			dependencies = { "luarocks.nvim" },
-			opts = {},
-		},
+		"3rd/image.nvim",
+		build = false, -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
+		opts = {},
 	},
 	{
 		"quarto-dev/quarto-nvim",
@@ -114,5 +100,24 @@ return {
 		config = true,
 		-- Depending on your nvim distro or config you may need to make the loading not lazy
 		-- lazy=false,
+	},
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false, -- Recommended
+		-- ft = "markdown" -- If you decide to lazy-load anyway
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{
+		"iurimateus/luasnip-latex-snippets.nvim",
+		-- vimtex isn't required if using treesitter
+		requires = { "L3MON4D3/LuaSnip" },
+		config = function()
+			require("luasnip-latex-snippets").setup({ use_treesitter = true })
+			require("luasnip").config.setup({ enable_autosnippets = true })
+		end,
 	},
 }

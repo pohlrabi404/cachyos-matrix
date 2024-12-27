@@ -4,6 +4,6 @@ local luasnip = {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 	},
-  event = "VeryLazy",
+	event = { "InsertEnter" },
 }
 return { luasnip }

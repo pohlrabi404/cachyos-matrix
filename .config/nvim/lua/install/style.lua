@@ -1,15 +1,15 @@
 local colorizer = {
 	"norcalli/nvim-colorizer.lua",
-  event = "VeryLazy",
+  event = "VimEnter",
   config = function ()
     require("colorizer").setup()
-  end,
+  end
 }
 
 local lualine = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-  event = "VeryLazy",
+	event = "VeryLazy",
 	opts = function(_, opts)
 		local terminal = require("lualine.themes.horizon")
 
@@ -51,4 +51,41 @@ local color_scheme = {
 	end,
 }
 
-return { colorizer, lualine, color_scheme }
+local indent_blankline = {
+	"lukas-reineke/indent-blankline.nvim",
+	main = "ibl",
+	opts = function(_, opts)
+		local highlight = {
+			"RainbowRed",
+			"RainbowGreen",
+			"RainbowViolet",
+		}
+
+		local hooks = require("ibl.hooks")
+		-- create the highlight groups in the highlight setup hook, so they are reset
+		-- every time the colorscheme changes
+		hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+			vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+			vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+			vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+		end)
+
+    opts = {
+      indent = {
+        highlight = highlight
+      },
+      scope = {
+        highlight = highlight
+      },
+    }
+    return opts
+	end,
+	event = "VeryLazy",
+}
+
+return {
+	colorizer,
+	lualine,
+	color_scheme,
+	indent_blankline,
+}

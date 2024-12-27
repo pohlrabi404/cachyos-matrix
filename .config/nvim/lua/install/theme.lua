@@ -1,5 +1,6 @@
 local colorizer = {
 	"norcalli/nvim-colorizer.lua",
+  event = "VeryLazy",
   config = function ()
     require("colorizer").setup()
   end,
@@ -8,6 +9,7 @@ local colorizer = {
 local lualine = {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+  event = "VeryLazy",
 	opts = function(_, opts)
 		local terminal = require("lualine.themes.horizon")
 

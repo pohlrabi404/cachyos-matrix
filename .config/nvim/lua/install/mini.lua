@@ -1,6 +1,7 @@
 local mini = {
 	"echasnovski/mini.nvim",
 	version = false,
+  event = "VeryLazy",
 	config = function()
 		require("mini.ai").setup()
 		require("mini.ai").setup()
@@ -12,11 +13,15 @@ local mini = {
 		})
 		require("mini.notify").setup()
 		require("mini.pairs").setup()
-		require("mini.sessions").setup({
-			autoread = true,
-		})
 		require("mini.splitjoin").setup()
 		require("mini.surround").setup()
 	end,
 }
-return mini
+local sessions = {
+  "echasnovski/mini.sessions",
+  event = "VimEnter",
+  opts = {
+    autoread = true,
+  }
+}
+return { mini, sessions }

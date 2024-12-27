@@ -4,6 +4,7 @@
 local treesitter = {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	event = "VeryLazy",
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = { "latex", "markdown", "markdown_inline", "python", "html" },
@@ -16,8 +17,8 @@ local treesitter = {
 }
 local treesitter_textobjects = {
 	"nvim-treesitter/nvim-treesitter-textobjects",
-	after = "nvim-treesitter",
-	requires = "nvim-treesitter/nvim-treesitter",
+	dependencies = "nvim-treesitter/nvim-treesitter",
+	event = "VeryLazy",
 }
 
 -- ╔════════════════════╗
@@ -26,10 +27,10 @@ local treesitter_textobjects = {
 local nvim_cmp = {
 	"hrsh7th/nvim-cmp",
 	dependencies = { "L3MON4D3/LuaSnip" },
-  lazy = false,
+	event = { "InsertEnter", "CmdlineEnter" },
 	opts = function(_, opts)
 		local snip = require("luasnip")
-    local cmp = require("cmp")
+		local cmp = require("cmp")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -53,24 +54,24 @@ local nvim_cmp = {
 				["<C-Tab>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<C-j>"] = cmp.mapping(function (fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif snip.locally_jumpable(1) then
-            snip.jump(1)
-          else
-            fallback()
-          end
-        end),
-        ["<C-k>"] = cmp.mapping(function (fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif snip.locally_jumpable(-1) then
-            snip.jump(-1)
-          else
-            fallback()
-          end
-        end),
+				["<C-j>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif snip.locally_jumpable(1) then
+						snip.jump(1)
+					else
+						fallback()
+					end
+				end),
+				["<C-k>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif snip.locally_jumpable(-1) then
+						snip.jump(-1)
+					else
+						fallback()
+					end
+				end),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						if #cmp.get_entries() == 1 then
@@ -97,11 +98,12 @@ local nvim_cmp = {
 				{ name = "buffer" },
 			}),
 		}
-    return opts
+		return opts
 	end,
 }
 local cmp_nvim_lsp = {
 	"hrsh7th/cmp-nvim-lsp",
+	event = "VeryLazy",
 }
 
 -- ╔═════════════════╗
@@ -109,16 +111,20 @@ local cmp_nvim_lsp = {
 -- ╚═════════════════╝
 local mason = {
 	"williamboman/mason.nvim",
+	event = "VeryLazy",
 	opts = {},
 }
 local mason_lspconfig = {
 	"williamboman/mason-lspconfig.nvim",
+	event = "VeryLazy",
 	opts = {
 		ensure_installed = { "lua_ls", "pyright" },
 	},
 }
 local nvim_lspconfig = {
 	"neovim/nvim-lspconfig",
+	dependencies = mason_lspconfig[1],
+	event = "VeryLazy",
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local config = require("lspconfig")
@@ -138,11 +144,13 @@ local nvim_lspconfig = {
 				},
 			},
 		})
+    vim.cmd("LspStart")
 	end,
 }
 
 local null_ls = {
 	"nvimtools/none-ls.nvim",
+  event = "VeryLazy",
 	opts = function(_, opts)
 		local null_ls = require("null-ls")
 		opts.sources = {

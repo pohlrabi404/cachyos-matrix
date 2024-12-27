@@ -61,6 +61,7 @@ local telescope = {
 local file_browser = {
 	"nvim-telescope/telescope-file-browser.nvim",
 	dependencies = { telescope[1], "nvim-lua/plenary.nvim" },
+  lazy = true,
 	config = function()
 		require("telescope").load_extension("file_browser")
 	end,
@@ -68,6 +69,7 @@ local file_browser = {
 
 local fzf = {
 	"nvim-telescope/telescope-fzf-native.nvim",
+  event = "VeryLazy",
 	build = "make",
 	dependencies = { telescope[1] },
 	config = function()

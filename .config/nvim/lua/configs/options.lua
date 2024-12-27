@@ -1,5 +1,8 @@
 local o = vim.opt
 
+-- Color
+o.termguicolors = true
+
 -- Relative number
 o.relativenumber = true
 
@@ -25,9 +28,6 @@ o.cursorline = true
 
 -- Use system clipboard
 o.clipboard = "unnamedplus"
-
--- Scroll-off, space at top and bottom
-o.scrolloff = 8
 
 -- Indent
 o.smartindent = true

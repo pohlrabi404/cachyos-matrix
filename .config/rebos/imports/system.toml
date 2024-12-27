@@ -75,7 +75,6 @@ items = [
 # YouTube
 # 
   "mpv",
-  "umpv",
   "svp-bin",
   "yt-dlp",
   "zenity",
@@ -95,11 +94,5 @@ items = [
 
 # Steam
   "steam",
-
-# PINCE
-  "pince-git",
-
-# Zathura for pdf
-  "zathura",
-  "tree-sitter-latex-git",
+  "tree-sitter-markdown",
 ]

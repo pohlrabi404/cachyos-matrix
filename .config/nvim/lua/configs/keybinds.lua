@@ -19,9 +19,3 @@ set("n", "<C-u>", "<C-u>zz")
 set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true })
 set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 set("n", ";c", "<cmd>s/\\<./\\u&/g<CR><cmd>nohlsearch<CR>")
-
--- Lsp
-set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { silent = false })
-set("n", "gd", vim.lsp.buf.definition)
-set("n", "H", vim.lsp.buf.hover)
-set("n", "<C-f>", vim.lsp.buf.format)

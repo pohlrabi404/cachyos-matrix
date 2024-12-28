@@ -12,6 +12,10 @@ local treesitter = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
 			},
+      modules = {},
+      sync_install = true,
+      auto_install = true,
+      ignore_install = {},
 		})
 	end,
 }
@@ -24,6 +28,14 @@ local treesitter_textobjects = {
 -- ╔════════════════════╗
 -- ║ Completion Setting ║
 -- ╚════════════════════╝
+local lazydev = {
+	"folke/lazydev.nvim",
+	opts = {
+		library = {
+      "nvim-dap-ui",
+		},
+	},
+}
 local nvim_cmp = {
 	"hrsh7th/nvim-cmp",
 	dependencies = { "L3MON4D3/LuaSnip" },
@@ -94,6 +106,7 @@ local nvim_cmp = {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" }, -- For luasnip users.
+				{ name = "lazydev", group_index = 0 },
 			}, {
 				{ name = "buffer" },
 			}),
@@ -101,6 +114,7 @@ local nvim_cmp = {
 		return opts
 	end,
 }
+
 local cmp_nvim_lsp = {
 	"hrsh7th/cmp-nvim-lsp",
 	event = "VeryLazy",
@@ -116,7 +130,7 @@ local mason = {
 }
 local mason_lspconfig = {
 	"williamboman/mason-lspconfig.nvim",
-	event = "VeryLazy",
+	event = "UIEnter",
 	opts = {
 		ensure_installed = { "lua_ls", "pyright" },
 	},
@@ -125,6 +139,33 @@ local nvim_lspconfig = {
 	"neovim/nvim-lspconfig",
 	dependencies = mason_lspconfig[1],
 	event = "VeryLazy",
+	keys = {
+		{
+			"<leader>cf",
+			vim.lsp.buf.format,
+			mode = "n",
+			desc = "Code Formatting",
+		},
+		{
+			"<leader>ch",
+			vim.lsp.buf.hover,
+			mode = "n",
+			desc = "Hover Over Text",
+		},
+		{
+			"<leader>cd",
+			vim.lsp.buf.definition,
+			mode = "n",
+			desc = "Goto Definition",
+		},
+		{
+			"<leader>ca",
+			vim.lsp.buf.code_action,
+			mode = "n",
+			silent = false,
+			desc = "Show Code Actions",
+		},
+	},
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		local config = require("lspconfig")
@@ -144,13 +185,13 @@ local nvim_lspconfig = {
 				},
 			},
 		})
-    vim.cmd("LspStart")
+		vim.cmd("LspStart")
 	end,
 }
 
 local null_ls = {
 	"nvimtools/none-ls.nvim",
-  event = "VeryLazy",
+	event = "VeryLazy",
 	opts = function(_, opts)
 		local null_ls = require("null-ls")
 		opts.sources = {
@@ -171,4 +212,5 @@ return {
 	null_ls,
 	nvim_lspconfig,
 	cmp_nvim_lsp,
+  lazydev,
 }

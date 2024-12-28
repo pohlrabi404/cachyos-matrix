@@ -7,7 +7,9 @@ items = [
   "neovim",
   "swayfx",
   "luarocks",
+  "hererocks",
   "dunst",
+  "lua51",
 
 # Nvim
   # Luasnip

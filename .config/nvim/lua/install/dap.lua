@@ -1,5 +1,6 @@
 local nvim_dap = {
 	"mfussenegger/nvim-dap",
+  event = "VeryLazy",
 }
 local dap_ui = {
 	"rcarriga/nvim-dap-ui",

@@ -19,3 +19,4 @@ set("n", "<C-u>", "<C-u>zz", { buffer = true })
 set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true })
 set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 set("n", ";c", "<cmd>s/\\<./\\u&/g<CR><cmd>nohlsearch<CR>")
+

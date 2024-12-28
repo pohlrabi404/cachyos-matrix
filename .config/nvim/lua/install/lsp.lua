@@ -4,7 +4,7 @@
 local treesitter = {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	event = "VeryLazy",
+  event = "VeryLazy",
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = { "latex", "markdown", "markdown_inline", "python", "html" },
@@ -12,10 +12,33 @@ local treesitter = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
 			},
-      modules = {},
-      sync_install = true,
-      auto_install = true,
-      ignore_install = {},
+			modules = {},
+			sync_install = true,
+			auto_install = true,
+			ignore_install = {},
+			textobjects = {
+				move = {
+					enable = true,
+					set_jumps = false, -- you can change this if you want.
+					goto_next_start = {
+						--- ... other keymaps
+						["]b"] = { query = "@code_cell.inner", desc = "next code block" },
+					},
+					goto_previous_start = {
+						--- ... other keymaps
+						["[b"] = { query = "@code_cell.inner", desc = "previous code block" },
+					},
+				},
+				select = {
+					enable = true,
+					lookahead = true, -- you can change this if you want
+					keymaps = {
+						--- ... other keymaps
+						["ib"] = { query = "@code_cell.inner", desc = "in block" },
+						["ab"] = { query = "@code_cell.outer", desc = "around block" },
+					},
+				},
+			},
 		})
 	end,
 }
@@ -32,7 +55,7 @@ local lazydev = {
 	"folke/lazydev.nvim",
 	opts = {
 		library = {
-      "nvim-dap-ui",
+			"nvim-dap-ui",
 		},
 	},
 }
@@ -191,7 +214,7 @@ local nvim_lspconfig = {
 
 local null_ls = {
 	"nvimtools/none-ls.nvim",
-	event = "VeryLazy",
+	event = { "BufRead", "VeryLazy" },
 	opts = function(_, opts)
 		local null_ls = require("null-ls")
 		opts.sources = {
@@ -212,5 +235,5 @@ return {
 	null_ls,
 	nvim_lspconfig,
 	cmp_nvim_lsp,
-  lazydev,
+	lazydev,
 }

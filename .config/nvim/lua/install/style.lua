@@ -80,7 +80,7 @@ local indent_blankline = {
     }
     return opts
 	end,
-	event = "VeryLazy",
+	event = { "VeryLazy", "InsertChange" },
 }
 
 return {

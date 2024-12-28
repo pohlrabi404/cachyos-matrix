@@ -9,6 +9,10 @@ items = [
   "luarocks",
   "dunst",
 
+# Nvim
+  # Luasnip
+  "lua-jsregexp",
+
 #
 # Browser
 #

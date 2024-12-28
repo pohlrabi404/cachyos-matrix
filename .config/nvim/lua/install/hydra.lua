@@ -85,6 +85,7 @@ local hydra_git = function()
   return ret
 end
 
+-- Hydra main function
 local hydra = {
 	"anuvyklack/hydra.nvim",
 	event = "VeryLazy",

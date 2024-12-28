@@ -20,3 +20,8 @@ set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { noremap = true })
 set("i", "<Tab>", [[pumvisible() ? "\<C-n>" : "\<Tab>"]], { expr = true })
 set("n", ";c", "<cmd>s/\\<./\\u&/g<CR><cmd>nohlsearch<CR>")
 
+local runner = require("quarto.runner")
+set("n", "<leader>rc", runner.run_cell,  { desc = "run cell", silent = true })
+set("n", "<leader>ra", runner.run_above, { desc = "run cell and above", silent = true })
+set("n", "<leader>rA", runner.run_all,   { desc = "run all cells", silent = true })
+set("n", "<leader>rl", runner.run_line,  { desc = "run line", silent = true })

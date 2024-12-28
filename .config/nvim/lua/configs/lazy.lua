@@ -19,13 +19,18 @@ vim.opt.rtp:prepend(lazypath)
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+
+
+local profile = os.getenv("NVIM_PROFILE") or "default"
+local imports = function ()
+  return { import = profile }
+end
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
     -- import your plugins
-    { import = "install" },
+    imports()
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -38,13 +43,6 @@ require("lazy").setup({
   },
 })
 
-local runner = require("quarto.runner")
-vim.keymap.set("n", "<leader>rc", runner.run_cell,  { desc = "run cell", silent = true })
-vim.keymap.set("n", "<leader>ra", runner.run_above, { desc = "run cell and above", silent = true })
-vim.keymap.set("n", "<leader>rA", runner.run_all,   { desc = "run all cells", silent = true })
-vim.keymap.set("n", "<leader>rl", runner.run_line,  { desc = "run line", silent = true })
-vim.keymap.set("v", "<leader>r",  runner.run_range, { desc = "run visual range", silent = true })
-vim.keymap.set("n", "<leader>RA", function()
-  runner.run_all(true)
-end, { desc = "run all cells of all languages", silent = true })
+require(profile .. ".global.options")
+require(profile .. ".global.keybinds")
 

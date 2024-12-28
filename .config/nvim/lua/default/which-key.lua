@@ -21,7 +21,6 @@ local which_key = {
 
 			{ "<leader>d", group = "Debug", icon = "" },
 			{ "<leader>db", icon = "", desc = "Set Breakpoint" },
-			{ "<leader>dpr", icon = "", desc = "Run Python Debugger" },
 
 			{ "<A-h>", "<C-w>h", group = "Move Window", desc = "Move Left" },
 			{ "<A-j>", "<C-w>j", group = "Move Window", desc = "Move Down" },

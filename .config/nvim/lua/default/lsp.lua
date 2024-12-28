@@ -7,7 +7,7 @@ local treesitter = {
   event = "VeryLazy",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			ensure_installed = { "latex", "markdown", "markdown_inline", "python", "html" },
+			ensure_installed = { "markdown", "markdown_inline", },
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
@@ -36,6 +36,7 @@ local lazydev = {
 		},
 	},
 }
+
 local nvim_cmp = {
 	"hrsh7th/nvim-cmp",
 	dependencies = { "L3MON4D3/LuaSnip" },
@@ -132,7 +133,7 @@ local mason_lspconfig = {
 	"williamboman/mason-lspconfig.nvim",
 	event = "UIEnter",
 	opts = {
-		ensure_installed = { "lua_ls", "pyright" },
+		ensure_installed = { "lua_ls" },
 	},
 }
 local nvim_lspconfig = {
@@ -172,19 +173,6 @@ local nvim_lspconfig = {
 		config.lua_ls.setup({
 			capabilities = capabilities,
 		})
-		config.pyright.setup({
-			capabilities = capabilities,
-			setting = {
-				python = {
-					analysis = {
-						typeCheckingMode = "off",
-						diagnosticSeverityOverrides = {
-							reportUnusedExpression = "none",
-						},
-					},
-				},
-			},
-		})
 		vim.cmd("LspStart")
 	end,
 }
@@ -196,8 +184,6 @@ local null_ls = {
 		local null_ls = require("null-ls")
 		opts.sources = {
 			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.black,
-			null_ls.builtins.diagnostics.pylint,
 		}
 	end,
 }

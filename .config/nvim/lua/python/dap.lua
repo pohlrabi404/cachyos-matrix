@@ -20,7 +20,13 @@ local dap_ui = {
 		end
 	end,
 	keys = {
-		{ "<leader>db", "<cmd> DapToggleBreakpoint<CR>", desc = "Toggle Break Point", mode = "n" },
+		{ "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Toggle Break Point", mode = "n" },
+		{ "<leader>dc", "<cmd>DapContinue<CR>", desc = "Debug: Continue", mode = "n" },
+		{ "<leader>dsi", "<cmd>DapStepInto<CR>", desc = "Debug: Step Into", mode = "n" },
+		{ "<leader>dso", "<cmd>DapStepOut<CR>", desc = "Debug: Step Out", mode = "n" },
+		{ "<leader>dsv", "<cmd>DapStepOver<CR>", desc = "Debug: Step Over", mode = "n" },
+		{ "<leader>dr", "<cmd>DapRestartFrame<CR>", desc = "Debug: Restart Frame", mode = "n" },
+		{ "<leader>dtr", "<cmd>DapToggleRepl<CR>", desc = "Debug: Toggle Repl", mode = "n" },
 	},
 }
 

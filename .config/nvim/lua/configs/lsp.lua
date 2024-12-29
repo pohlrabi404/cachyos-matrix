@@ -1,0 +1,113 @@
+local M = {}
+
+M.lazydev = {
+	library = {
+		-- Load luvit types when the `vim.uv` word is found
+		{ path = "luvit-meta/library", words = { "vim%.uv" } },
+	},
+}
+
+M.lspconfig = function()
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+		callback = function(event)
+			local map = function(keys, func, desc, mode)
+				mode = mode or "n"
+				vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+			end
+			local bltin = require("telescope.builtin")
+			map("gd", bltin.lsp_definitions, "[g]o to [d]efinition")
+			map("gr", bltin.lsp_references, "[g]o to [r]eferences")
+			map("gI", bltin.lsp_implementations, "[g]o to [I]mplementations")
+			map("<leader>D", bltin.lsp_type_definitions, "type [D]efinition")
+			-- Symbols are variables, functions, etc.
+			map("<leader>ds", bltin.lsp_document_symbols, "[d]ocument [s]ymbols")
+			-- Similar, but over the whole workspace
+			map("<leader>ws", bltin.lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
+			map("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+			map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ctions")
+			map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
+
+			-- Get highlight references when cursor hovering
+			local client = vim.lsp.get_client_by_id(event.data.client_id)
+			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+				local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+				vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+					buffer = event.buf,
+					group = highlight_augroup,
+					callback = vim.lsp.buf.document_highlight,
+				})
+
+				vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+					buffer = event.buf,
+					group = highlight_augroup,
+					callback = vim.lsp.buf.clear_references,
+				})
+
+				vim.api.nvim_create_autocmd("LspDetach", {
+					group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+					callback = function(event2)
+						vim.lsp.buf.clear_references()
+						vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+					end,
+				})
+			end
+
+			-- Inlay hints
+			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+				map("<leader>th", function()
+					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+				end, "[T]oggle Inlay [H]ints")
+			end
+		end,
+	})
+
+	-- Change diagnostic symbols in the sign column (gutter)
+	if vim.g.have_nerd_font then
+		local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+		local diagnostic_signs = {}
+		for type, icon in pairs(signs) do
+			diagnostic_signs[vim.diagnostic.severity[type]] = icon
+		end
+		vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+	end
+end
+
+M.masonconfig = function()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+	local servers = {
+		lua_ls = {
+			settings = {
+				Lua = {
+					completion = {
+						callSnippet = "Replace",
+					},
+					diagnostics = { disable = { "missing-fields" } },
+				},
+			},
+		},
+	}
+	local ensure_installed = vim.tbl_keys(servers or {})
+	vim.list_extend(ensure_installed, {
+		"stylua",
+	})
+
+	require("mason").setup()
+
+	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+	require("mason-lspconfig").setup({
+		handlers = {
+			function(server_name)
+				local server = servers[server_name] or {}
+				-- This handles overriding only values explicitly passed
+				-- by the server configuration above. Useful when disabling
+				-- certain features of an LSP (for example, turning off formatting for ts_ls)
+				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+				require("lspconfig")[server_name].setup(server)
+			end,
+		},
+	})
+end
+
+return M

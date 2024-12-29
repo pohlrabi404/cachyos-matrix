@@ -67,3 +67,8 @@
 #
   source <(fzf --zsh)
 
+#
+# Nvim Profiles
+#
+  alias jvim="NVIM_PROFILE=jupyter nvim"
+  alias pvim="NVIM_PROFILE=python nvim"

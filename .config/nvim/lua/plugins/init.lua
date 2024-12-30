@@ -40,6 +40,24 @@ return {
 			},
 		},
 	},
+	--- NvchadUI ---
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	{
+		"nvchad/ui",
+		lazy = false,
+		config = function()
+			require("nvchad")
+		end,
+	},
+	{
+		"nvchad/base46",
+		build = function()
+			require("base46").load_all_highlights()
+		end,
+	},
+	{
+		"nvzone/volt",
+	},
 
 	---------- Notification ----------
 
@@ -73,13 +91,13 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"hrsh7th/cmp-nvim-lsp",
-			{
-				"j-hui/fidget.nvim",
-				event = "UIEnter",
-				opts = {
-					-- options
-				},
-			},
+			-- {
+			-- 	"j-hui/fidget.nvim",
+			-- 	event = "UIEnter",
+			-- 	opts = {
+			-- 		-- options
+			-- 	},
+			-- },
 		},
 		config = require("configs.lsp").lspconfig,
 	},

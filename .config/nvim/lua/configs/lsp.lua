@@ -16,6 +16,7 @@ M.lspconfig = function()
 				vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 			end
 			local bltin = require("telescope.builtin")
+			local rename = require("nvchad.lsp.renamer")
 			map("gd", bltin.lsp_definitions, "[g]o to [d]efinition")
 			map("gr", bltin.lsp_references, "[g]o to [r]eferences")
 			map("gI", bltin.lsp_implementations, "[g]o to [I]mplementations")
@@ -24,7 +25,7 @@ M.lspconfig = function()
 			map("<leader>ds", bltin.lsp_document_symbols, "[d]ocument [s]ymbols")
 			-- Similar, but over the whole workspace
 			map("<leader>ws", bltin.lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
-			map("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+			map("<leader>rn", rename, "[r]e[n]ame")
 			map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ctions")
 			map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
 

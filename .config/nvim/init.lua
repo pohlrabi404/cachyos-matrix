@@ -1,5 +1,4 @@
 vim.g.mapleader = " "
-
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -67,4 +66,8 @@ dofile(vim.g.base46_cache .. "statusline")
 
 vim.schedule(function()
 	require("mappings")
+end)
+
+vim.schedule(function()
+	require("customs.hydra")
 end)

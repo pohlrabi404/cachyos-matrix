@@ -11,55 +11,7 @@ M.lspconfig = function()
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 		callback = function(event)
-			local map = function(keys, func, desc, mode)
-				mode = mode or "n"
-				vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-			end
-			local bltin = require("telescope.builtin")
-			local rename = require("nvchad.lsp.renamer")
-			map("gd", bltin.lsp_definitions, "[g]o to [d]efinition")
-			map("gr", bltin.lsp_references, "[g]o to [r]eferences")
-			map("gI", bltin.lsp_implementations, "[g]o to [I]mplementations")
-			map("<leader>D", bltin.lsp_type_definitions, "type [D]efinition")
-			-- Symbols are variables, functions, etc.
-			map("<leader>ds", bltin.lsp_document_symbols, "[d]ocument [s]ymbols")
-			-- Similar, but over the whole workspace
-			map("<leader>ws", bltin.lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
-			map("<leader>rn", rename, "[r]e[n]ame")
-			map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ctions")
-			map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
-
-			-- Get highlight references when cursor hovering
-			local client = vim.lsp.get_client_by_id(event.data.client_id)
-			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-				local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-				vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-					buffer = event.buf,
-					group = highlight_augroup,
-					callback = vim.lsp.buf.document_highlight,
-				})
-
-				vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-					buffer = event.buf,
-					group = highlight_augroup,
-					callback = vim.lsp.buf.clear_references,
-				})
-
-				vim.api.nvim_create_autocmd("LspDetach", {
-					group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-					callback = function(event2)
-						vim.lsp.buf.clear_references()
-						vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
-					end,
-				})
-			end
-
-			-- Inlay hints
-			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-				map("<leader>th", function()
-					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-				end, "[T]oggle Inlay [H]ints")
-			end
+			require("customs.lsp").setup(event)
 		end,
 	})
 

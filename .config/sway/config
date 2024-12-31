@@ -175,6 +175,9 @@ exec swww-daemon & swww img $HOME/backgrounds/matrix.gif
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
 
+    # Toggle sticky
+    bindsym $mod+s sticky toggle
+
     # Swap focus between the tiling area and the floating area
     bindsym $mod+Tab focus mode_toggle
 #
@@ -201,7 +204,6 @@ exec qutebrowser &
 #### Behaviour
 #
 # Move to workspace
-#
     for_window [app_id=".*qutebrowser.*"] move to workspace 2
     assign [app_id=".*qutebrowser.*"] workspace 2
 

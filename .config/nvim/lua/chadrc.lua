@@ -2,7 +2,7 @@ local M
 
 M = {
 	base46 = {
-		theme = "poimandres",
+		theme = "ayu_dark",
 		transparency = true,
 	},
 

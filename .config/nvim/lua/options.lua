@@ -67,3 +67,7 @@ vim.env.PATH = table.concat({ vim.fn.stdpath("data"), "mason", "bin" }, sep) .. 
 
 -- tabline
 opt.showtabline = 0
+
+-- Search
+o.incsearch = true
+o.scrolloff = 10

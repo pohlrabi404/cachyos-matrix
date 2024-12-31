@@ -1,41 +1,70 @@
 local M = {}
 
-M.setup = function(event)
-	M.event = event
-	M.client = vim.lsp.get_client_by_id(M.event.data.client_id)
-	M.keymap()
-	M.autocmds()
+M.setup = function()
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+		callback = function(event)
+			M.event = event
+			M.client = vim.lsp.get_client_by_id(M.event.data.client_id)
+			M.gen_available_keys()
+			M.autocmds()
+			M.diagnostic()
+			M.set_keymap()
+		end,
+	})
 end
 
-M.map = function(keys, func, desc, mode)
-	mode = mode or "n"
-	vim.keymap.set(mode, keys, func, { buffer = M.event.buf, desc = "LSP: " .. desc })
-end
+M.funcs = {}
 
-M.keymap = function()
+---@type nil | function
+M.keymap = nil
+
+M.gen_available_keys = function()
 	local builtin = require("telescope.builtin")
 	local rename = require("nvchad.lsp.renamer")
 
-	M.map("gd", builtin.lsp_definitions, "[g]o to [d]efinition")
-	M.map("gr", builtin.lsp_references, "[g]o to [r]eferences")
-	M.map("gI", builtin.lsp_implementations, "[g]o to [I]mplementations")
-	M.map("<leader>D", builtin.lsp_type_definitions, "type [D]efinition")
+	M.funcs = {
+		definitions = builtin.lsp_definitions,
+		references = builtin.lsp_references,
+		implementations = builtin.lsp_implementations,
+		type_definitions = builtin.lsp_type_definitions,
+		document_symbols = builtin.lsp_document_symbols,
+		workspace_symbols = builtin.lsp_workspace_symbols,
+		dynamic_workspace_symbols = builtin.lsp_dynamic_workspace_symbols,
+		rename = rename,
+		code_action = vim.lsp.buf.code_action,
+		declaration = vim.lsp.buf.declaration,
+	}
 
-	-- Symbols are variables, functions, etc.
-	M.map("<leader>ds", builtin.lsp_document_symbols, "[d]ocument [s]ymbols")
-
-	-- Similar, but over the whole workspace
-	M.map("<leader>ws", builtin.lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
-	M.map("<leader>rn", rename, "[r]e[n]ame")
-	M.map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ctions")
-	M.map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
-
-	-- Inlay hints
 	if M.client and M.client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-		M.map("<leader>th", function()
+		M.funcs.inlay_hint = function()
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = M.event.buf }))
-		end, "[T]oggle Inlay [H]ints")
+		end
 	end
+end
+
+M.set_keymap = function()
+	for _, key in ipairs(M.keymap()) do
+		M.map(unpack(key))
+	end
+end
+
+-- Inner functions
+M.diagnostic = function()
+	-- Change diagnostic symbols in the sign column (gutter)
+	if vim.g.have_nerd_font then
+		local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+		local diagnostic_signs = {}
+		for type, icon in pairs(signs) do
+			diagnostic_signs[vim.diagnostic.severity[type]] = icon
+		end
+		vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+	end
+end
+
+M.map = function(mode, keys, func, desc)
+	mode = mode or "n"
+	vim.keymap.set(mode, keys, func, { buffer = M.event.buf, desc = "LSP: " .. desc })
 end
 
 M.autocmds = function()

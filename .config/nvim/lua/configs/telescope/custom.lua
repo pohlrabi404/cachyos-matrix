@@ -1,7 +1,6 @@
 local M = {}
 
 require("telescope").load_extension("file_browser")
-local fb = require("telescope").extensions.file_browser
 local fb_actions = require("telescope").extensions.file_browser.actions
 
 M.find_files = function()
@@ -14,7 +13,6 @@ M.find_files = function()
 	})
 end
 
-local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 
 M.open_parent_folder = function(prompt_bufnr)
@@ -23,7 +21,6 @@ M.open_parent_folder = function(prompt_bufnr)
 	if parent_dir == "" then
 		fb_actions.goto_parent_dir(prompt_bufnr)
 	else
-		local picker = action_state.get_current_picker(prompt_bufnr)
 		fb_actions.open_dir(prompt_bufnr, _, parent_dir)
 	end
 end
@@ -48,7 +45,7 @@ M.file_buffer = function()
 		end,
 	}, {
 		sort_lastused = true,
-		-- sort_mru = true,
+		sort_mru = true,
 	})
 end
 

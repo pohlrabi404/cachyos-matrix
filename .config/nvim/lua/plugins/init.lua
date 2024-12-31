@@ -6,6 +6,7 @@ return {
 		tag = "0.1.8",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
+			dofile(vim.g.base46_cache .. "telescope")
 			require("configs.telescope")
 			require("telescope").load_extension("file_browser")
 			require("telescope").load_extension("fzf")
@@ -20,19 +21,9 @@ return {
 	},
 
 	---------- Theme ----------
-	-- {
-	-- 	"RRethy/base16-nvim",
-	-- 	event = "UIEnter",
-	-- 	config = function()
-	-- 		require("base16-colorscheme").with_config({
-	-- 			telescope = false,
-	-- 		})
-	-- 		vim.cmd("colorscheme base16-default-dark")
-	-- 	end,
-	-- },
 	{
 		"uga-rosa/ccc.nvim",
-		event = "UIEnter",
+		event = "User FilePost",
 		opts = {
 			highlighter = {
 				auto_enable = true,
@@ -62,31 +53,46 @@ return {
 	---------- Notification ----------
 
 	---------- Treesitter ----------
-	{ "nvim-treesitter/nvim-treesitter" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			dofile(vim.g.base46_cache .. "treesitter")
+		end,
+	},
 
 	---------- Formatter -----------
 	{
 		"stevearc/conform.nvim",
-		event = { "UIEnter" },
+		event = { "User FilePost" },
 		opts = require("configs.formatter").formatter,
 	},
 	---------- Lsp -----------
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
-		opts = require("configs.lsp").lazydev,
+		opts = {
+			library = {
+				{
+					path = "luvit-meta/library",
+					words = { "vim%.uv" },
+				},
+			},
+		},
 	},
 	{ "Bilal2453/luvit-meta", lazy = true },
 
 	-- Main LSP Config --
 	{
 		"neovim/nvim-lspconfig",
-		event = { "UIEnter" },
+		event = { "User FilePost" },
 		dependencies = {
 			{
 				"williamboman/mason.nvim",
 				cmd = { "Mason", "MasonInstall" },
-				config = require("configs.lsp").masonconfig,
+				config = function()
+					dofile(vim.g.base46_cache .. "mason")
+					require("configs.lsp").masonconfig()
+				end,
 			},
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -128,34 +134,13 @@ return {
 	-------- Which key ---------
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		event = "User FilePost",
 		opts = {},
-		keys = {
-			{
-				"<leader>/",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "buffer local keys",
-			},
-		},
 	},
 	----------- Git Things ---------
 	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"sindrets/diffview.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-    cmd = {"Neogit"},
-		opts = {},
-	},
-	{
 		"lewis6991/gitsigns.nvim",
-		opts = require("configs.gitsigns"),
-	},
-	{
-		"anuvyklack/hydra.nvim",
+		event = "User FilePost",
+		opts = require("configs.gitsigns").setup(),
 	},
 }

@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M = {
 	defaults = { lazy = true },
 
 	ui = {
@@ -44,3 +46,5 @@ return {
 		},
 	},
 }
+
+return M

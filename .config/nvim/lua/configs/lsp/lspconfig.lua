@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+M.setup = function(opts_func)
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 		callback = function(event)
@@ -9,15 +9,12 @@ M.setup = function()
 			M.gen_available_keys()
 			M.autocmds()
 			M.diagnostic()
-			M.set_keymap()
+			M.set_keymap(opts_func)
 		end,
 	})
 end
 
 M.funcs = {}
-
----@type nil | function
-M.keymap = nil
 
 M.gen_available_keys = function()
 	local builtin = require("telescope.builtin")
@@ -43,8 +40,8 @@ M.gen_available_keys = function()
 	end
 end
 
-M.set_keymap = function()
-	for _, key in ipairs(M.keymap()) do
+M.set_keymap = function(opts_func)
+	for _, key in ipairs(opts_func()) do
 		M.map(unpack(key))
 	end
 end

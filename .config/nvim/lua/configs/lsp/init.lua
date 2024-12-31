@@ -2,14 +2,12 @@ local lsp = require("configs.lsp.lspconfig")
 local M = {}
 
 M.lspconfig = function()
-	lsp.keymap = M.lsp_keymap
-	lsp.setup()
+	lsp.setup(M.lsp_keymap)
 end
 
 M.masonconfig = function()
 	local mason = require("configs.lsp.mason")
-	mason.servers = M.mason_servers
-	mason.setup()
+	mason.setup(M.mason_servers)
 end
 
 -- Setup servers

@@ -46,9 +46,6 @@ return {
 			require("base46").load_all_highlights()
 		end,
 	},
-	{
-		"nvzone/volt",
-	},
 
 	---------- Notification ----------
 

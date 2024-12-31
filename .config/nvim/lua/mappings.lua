@@ -26,9 +26,9 @@ map("t", "<A-l>", "<C-\\><C-N><C-w><C-l>", { desc = "move right" })
 -- Exit terminal mode
 map("t", "<C-e>", "<C-\\><C-N>")
 
-map("n", "j", "jzz")
-map("n", "k", "kzz")
-map("n", "<c-d>", "<c-d>zz")
+-- map("n", "j", "jzz")
+-- map("n", "k", "kzz")
+-- map("n", "<c-d>", "<c-d>zz")
 
 -- lazygit
 local term = require("nvchad.term")

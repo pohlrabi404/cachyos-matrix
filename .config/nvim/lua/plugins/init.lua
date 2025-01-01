@@ -72,6 +72,7 @@ return {
 	{
 		"rmagatti/auto-session",
 		event = "User FilePost",
+		cmd = "SessionRestore",
 		keys = require("configs.session").keys(),
 		---enables autocomplete for opts
 		---@module "auto-session"

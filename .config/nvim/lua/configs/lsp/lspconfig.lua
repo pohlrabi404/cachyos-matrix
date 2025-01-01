@@ -18,7 +18,6 @@ M.funcs = {}
 
 M.gen_available_keys = function()
 	local builtin = require("telescope.builtin")
-	local rename = require("nvchad.lsp.renamer")
 
 	M.funcs = {
 		definitions = builtin.lsp_definitions,
@@ -62,7 +61,9 @@ end
 
 M.map = function(mode, keys, func, desc)
 	mode = mode or "n"
-	vim.keymap.set(mode, keys, func, { buffer = M.event.buf, desc = "LSP: " .. desc })
+	if func ~= nil then
+		vim.keymap.set(mode, keys, func, { buffer = M.event.buf, desc = "LSP: " .. desc })
+	end
 end
 
 M.autocmds = function()

@@ -32,6 +32,8 @@ M.mason_servers = function()
 			},
 		},
 		"stylua",
+		"pyright",
+		"pylint",
 	}
 end
 

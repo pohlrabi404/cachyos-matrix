@@ -143,4 +143,18 @@ return {
 		event = "User FilePost",
 		opts = require("configs.gitsigns").setup(),
 	},
+
+	---------- Mini ----------
+	{
+		"echasnovski/mini.nvim",
+		event = "User FilePost",
+		config = require("configs.mini").setup,
+	},
+
+	--- Autopairs ---
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = require("configs.autopairs").setup,
+	},
 }

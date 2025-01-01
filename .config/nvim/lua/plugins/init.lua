@@ -16,7 +16,13 @@ return {
 		},
 	},
 	--- NvchadUI ---
-	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	{
+		"nvim-tree/nvim-web-devicons",
+		opts = function()
+			dofile(vim.g.base46_cache .. "devicons")
+			return {}
+		end,
+	},
 	{
 		"nvchad/ui",
 		lazy = false,
@@ -33,6 +39,23 @@ return {
 	{
 		"nvzone/volt",
 	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "User FilePost",
+		opts = {
+			indent = { char = "│", highlight = "IblChar" },
+			scope = { char = "│", highlight = "IblScopeChar" },
+		},
+		config = function(_, opts)
+			dofile(vim.g.base46_cache .. "blankline")
+
+			local hooks = require("ibl.hooks")
+			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+			require("ibl").setup(opts)
+
+			dofile(vim.g.base46_cache .. "blankline")
+		end,
+	},
 
 	---------- Treesitter ----------
 	{
@@ -46,7 +69,10 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "User FilePost",
-		opts = {},
+		opts = function()
+			dofile(vim.g.base46_cache .. "whichkey")
+			return {}
+		end,
 	},
 	----------- Git Things ---------
 	{
@@ -80,6 +106,39 @@ return {
 		opts = {
 			suppressed_dirs = { "~/", "~/Downloads", "/" },
 			-- log_level = 'debug',
+		},
+	},
+	{
+		{
+			"abecodes/tabout.nvim",
+			config = function()
+				require("tabout").setup({
+					tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+					backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
+					act_as_tab = true, -- shift content if tab out is not possible
+					act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+					default_tab = "<C-Tab>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+					default_shift_tab = "<S-Tab>", -- reverse shift default action,
+					enable_backwards = true, -- well ...
+					completion = false, -- if the tabkey is used in a completion pum
+					tabouts = {
+						{ open = "'", close = "'" },
+						{ open = '"', close = '"' },
+						{ open = "`", close = "`" },
+						{ open = "(", close = ")" },
+						{ open = "[", close = "]" },
+						{ open = "{", close = "}" },
+					},
+					ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+					exclude = {}, -- tabout will ignore these filetypes
+				})
+			end,
+			dependencies = { -- These are optional
+				"nvim-treesitter/nvim-treesitter",
+				"L3MON4D3/LuaSnip",
+				"hrsh7th/nvim-cmp",
+			},
+			event = "User FilePost", -- Set the event to 'InsertCharPre' for better compatibility
 		},
 	},
 }

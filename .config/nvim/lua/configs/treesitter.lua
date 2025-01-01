@@ -1,5 +1,5 @@
 return {
-	ensure_installed = { "lua", "luadoc" },
+	ensure_installed = { "lua", "luadoc", "python", "markdown-inline" },
 	sync_install = true,
 	auto_install = true,
 	highlight = {

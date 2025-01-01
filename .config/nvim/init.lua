@@ -15,7 +15,9 @@ local lazy_config = require("configs.lazy")
 
 -- load plugins
 require("lazy").setup({
-	{ import = "plugins" },
+	{
+		import = "plugins",
+	},
 }, lazy_config)
 
 dofile(vim.g.base46_cache .. "defaults")

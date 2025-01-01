@@ -2,14 +2,16 @@ local M = {}
 
 require("telescope").load_extension("file_browser")
 local fb_actions = require("telescope").extensions.file_browser.actions
+local fb = require("telescope").extensions.file_browser
 
 M.find_files = function()
-	require("telescope").extensions.file_browser.file_browser({
+	fb.file_browser({
 		path = vim.fn.expand("%:p:h"), -- Start in the directory of the current file
 		select_buffer = false, -- Do not select the buffer after opening
 		hidden = true, -- Include hidden files (optional)
 		respect_gitignore = false, -- Respect .gitignore (optional)
 		auto_depth = true,
+		grouped = true,
 	})
 end
 

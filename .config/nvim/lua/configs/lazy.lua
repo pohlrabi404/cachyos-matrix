@@ -3,6 +3,8 @@ local M = {}
 M = {
 	defaults = { lazy = true },
 
+	change_detection = { notify = false },
+
 	ui = {
 		icons = {
 			ft = "",

@@ -28,7 +28,8 @@ M.gen_available_keys = function()
 		document_symbols = builtin.lsp_document_symbols,
 		workspace_symbols = builtin.lsp_workspace_symbols,
 		dynamic_workspace_symbols = builtin.lsp_dynamic_workspace_symbols,
-		rename = rename,
+		-- rename = rename,
+		rename = vim.lsp.buf.rename,
 		code_action = vim.lsp.buf.code_action,
 		declaration = vim.lsp.buf.declaration,
 	}

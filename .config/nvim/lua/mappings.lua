@@ -43,10 +43,6 @@ map({ "n", "t" }, "<C-t>", function()
 	})
 end, { desc = "Terminal" })
 
-map("n", "<leader>/", function()
-	require("which-key").show({ global = true })
-end)
-
 map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "[S]ave [s]ession" })
 map("n", "<leader>st", "<cmd>SessionToggleAutoSave<CR>", { desc = "[s]ession [t]oggle autosave" })
 
@@ -57,6 +53,7 @@ end, { desc = "[g]rab [n]ode" })
 map("n", "<leader>/", function()
 	require("which-key").show({ global = true })
 end, { desc = "show local mappings" })
+
 map("n", "<leader>?", function()
 	require("which-key").show({ global = false })
 end, { desc = "show global mappings" })

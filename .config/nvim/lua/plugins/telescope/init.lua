@@ -12,6 +12,7 @@ local M = {
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		cmd = "Telescope",
+		event = "User FilePost",
 		config = config,
 	},
 

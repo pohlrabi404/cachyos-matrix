@@ -12,7 +12,8 @@ set $right l
 # Terminal
 set $term kitty
 # App launcher 
-set $menu wofi --show drun 
+set $menu $HOME/.config/rofi/launchers/type-3/launcher.sh 
+set $powermenu $HOME/.config/rofi/powermenu/type-4/powermenu.sh 
 # Font
 exec fcitx5
 
@@ -26,7 +27,7 @@ gaps {
 
 # Border
 default_border pixel 5
-client.focused #000000 #000000 #000000 #00b000 #00b000
+client.focused #000000 #000000 #000000 #966fd6 #966fd6
 
 # Window background blur
 blur on 
@@ -41,8 +42,8 @@ blur_saturation 1.1
 shadows on 
 shadows_on_csd on 
 shadow_blur_radius 20
-shadow_color #00f000
-shadow_inactive_color #00000000
+shadow_color #D1C4E9
+shadow_inactive_color #000000
 shadow_offset 0 0
 
 # Opacity
@@ -62,7 +63,7 @@ scratchpad_minimize disable
 ### Output configuration
 #
 # Change background paper here
-exec swww-daemon & swww img $HOME/backgrounds/matrix.gif
+exec swww-daemon & swww img $HOME/backgrounds/rain.gif
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -108,6 +109,7 @@ exec swww-daemon & swww img $HOME/backgrounds/matrix.gif
 
     # Start your launcher
     bindsym $mod+r exec $menu
+    bindsym $mod+p exec $powermenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

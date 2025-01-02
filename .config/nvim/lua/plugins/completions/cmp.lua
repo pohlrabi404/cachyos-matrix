@@ -25,14 +25,18 @@ M.config = function()
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 
-			["<C-l>"] = cmp.mapping(function()
+			["<C-l>"] = cmp.mapping(function(fallback)
 				if luasnip.expand_or_locally_jumpable() then
 					luasnip.expand_or_jump()
+				else
+					fallback()
 				end
 			end, { "i", "s" }),
-			["<C-h>"] = cmp.mapping(function()
+			["<C-h>"] = cmp.mapping(function(fallback)
 				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
+				else
+					fallback()
 				end
 			end, { "i", "s" }),
 		}),

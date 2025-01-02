@@ -39,11 +39,11 @@
      },
      "disk": {
         "interval": 30,
-        "format": "<span color=\"#00ff00\"></span>   {percentage_used}%",
+        "format": "<span color=\"#966fd6\"></span>   {percentage_used}%",
      },
      "backlight": {
         "format": "{icon}   {percent}%",
-        "format-icons": ["<span color=\"#000000\">󰖨</span>", "<span color=\"#009000\">󰖨</span>", "<span color=\"#00ff00\">󰖨</span>"]
+        "format-icons": ["<span color=\"#1e0e3f\">󰖨</span>", "<span color=\"#5e3a9e\">󰖨</span>", "<span color=\"#a78bfa\">󰖨</span>"]
      },
     "sway/window": {
       "format": "",
@@ -51,7 +51,7 @@
       "icon-size": 24,
     },
     "sway/mode": {
-        "format": "<span style=\"italic\"><span color=\"#00f000\"></span>  {}</span>", // Icon: expand-arrows-alt
+        "format": "<span style=\"italic\"><span color=\"#966fd6\"></span>  {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
     },
     "idle_inhibitor": {
@@ -67,18 +67,18 @@
     },
     "clock": {
         "interval": 1,
-        "format": "<span color=\"#00f000\"></span>  {:%H : %M : %S}",
+        "format": "<span color=\"#966fd6\"></span>  {:%H : %M : %S}",
     },
     "clock#date": {
       "interval": 10,
-      "format": "<span color=\"#00f000\"></span>  {:%e %b %Y}", // Icon: calendar-alt
+      "format": "<span color=\"#966fd6\"></span>  {:%e %b %Y}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}",
     },
     "cpu": {
-        "format": "<span color=\"#00f000\"></span>  {usage}%  ({load})"
+        "format": "<span color=\"#966fd6\"></span>  {usage}%  ({load})"
     },
     "memory": {
-        "format": "<span color=\"#00f000\"></span>  {}%"
+        "format": "<span color=\"#966fd6\"></span>  {}%"
     },
     "battery": {
 	"interval": 10,
@@ -100,9 +100,9 @@
     },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "<span color=\"#00f000\"></span>",
-        "format-ethernet": "<span color=\"#00f000\"></span>",
-        "format-disconnected": "<span color=\"#00f000\">⚠</span>",
+        "format-wifi": "<span color=\"#966fd6\"></span>",
+        "format-ethernet": "<span color=\"#966fd6\"></span>",
+        "format-disconnected": "<span color=\"#966fd6\">⚠</span>",
         "interval" : 7
     },
     "group/network-tray": {
@@ -114,7 +114,7 @@
       },
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "<span color=\"#00f000\">{icon}</span>    {volume}%",
+        "format": "<span color=\"#966fd6\">{icon}</span>    {volume}%",
         "format-muted": "",
         "format-icons": {
             "headphones": "",

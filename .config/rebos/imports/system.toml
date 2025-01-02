@@ -32,6 +32,11 @@ items = [
   "swww",
 
 #
+# App launcher
+#
+  "rofi-wayland",
+
+#
 # Font
 #
   "ttf-cmu-serif",
@@ -101,4 +106,8 @@ items = [
 # Steam
   "steam",
   "tree-sitter-markdown",
+# Lazygit
+  "lazygit",
+
+  "swaylock",
 ]

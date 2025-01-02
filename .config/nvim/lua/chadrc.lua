@@ -2,7 +2,7 @@ local M
 
 M = {
 	base46 = {
-		theme = "ayu_dark",
+		theme = "chadracula-evondev",
 		transparency = true,
 	},
 
@@ -33,7 +33,11 @@ M = {
 
 		buttons = {
 			{ txt = "  Restore Session", keys = "sr", cmd = "SessionRestore" },
-			{ txt = "  Find File", keys = "ff", cmd = "Telescope find_files" },
+			{
+				txt = "  Find File",
+				keys = "ff",
+				cmd = "Telescope file_browser",
+			},
 			{ txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
 			{ txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep" },
 			{ txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()" },

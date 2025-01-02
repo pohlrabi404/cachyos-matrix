@@ -58,6 +58,10 @@ M = {
 		tabufline = {
 			enabled = false,
 		},
+		cmp = {
+			icons_left = false,
+			style = "flat_dark",
+		},
 	},
 }
 

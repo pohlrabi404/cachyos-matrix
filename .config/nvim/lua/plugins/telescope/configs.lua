@@ -24,15 +24,10 @@ M.setup = function()
 			},
 		},
 	})
-end
 
-M.mappings = function()
-	local fb = require("plugins.telescope.customs")
-	return {
-		{ "<leader>ff", fb.find_files, desc = "[f]ind [f]iles" },
-		{ "<leader>fb", fb.file_buffer, desc = "[f]ile [b]uffer" },
-		{ "<leader>fg", fb.live_grep, desc = "[f]ile [g]rep" },
-	}
+	ExeAutoCmd("User", {
+		pattern = "telescope-mapping",
+	})
 end
 
 return M

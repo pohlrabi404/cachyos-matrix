@@ -12,11 +12,4 @@ M.opts = function(_, opts)
 	return vim.tbl_deep_extend("force", opts, custom_opts)
 end
 
-M.mappings = function()
-	return {
-		{ "<leader>ss", "<cmd>SessionSave<CR>", desc = "[S]ave [s]ession" },
-		{ "<leader>st", "<cmd>SessionToggleAutoSave<CR>", desc = "[s]ession [t]oggle autosave" },
-	}
-end
-
 return M

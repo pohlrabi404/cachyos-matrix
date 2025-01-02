@@ -5,15 +5,12 @@ local config = function()
 	require("telescope").load_extension("fzf")
 end
 
-local keys = require("plugins.telescope.configs").mappings
-
 local M = {
 	---------- Telescope ----------
 	"nvim-lua/plenary.nvim",
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		keys = keys,
 		cmd = "Telescope",
 		config = config,
 	},

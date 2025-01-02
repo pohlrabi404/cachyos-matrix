@@ -59,8 +59,7 @@ M = {
 			enabled = false,
 		},
 		cmp = {
-			icons_left = false,
-			style = "flat_dark",
+			enabled = false,
 		},
 	},
 }

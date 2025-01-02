@@ -1,5 +1,6 @@
 local map = vim.keymap.set
 
+-- Moving around between windows
 map("i", "<C-w><C-h>", "<C-\\><C-N><C-w><C-h>", { desc = "move left" })
 map("i", "<C-w><C-j>", "<C-\\><C-N><C-w><C-j>", { desc = "move down" })
 map("i", "<C-w><C-k>", "<C-\\><C-N><C-w><C-k>", { desc = "move up" })
@@ -71,3 +72,7 @@ AutoCmd("User", {
 		map("n", "<leader>fg", fb.live_grep, { desc = "[f]ile [g]rep" })
 	end,
 })
+
+map({ "n", "x", "o" }, "gn", function()
+	require("leap.treesitter").select()
+end, { desc = "[g]rab [n]ode" })

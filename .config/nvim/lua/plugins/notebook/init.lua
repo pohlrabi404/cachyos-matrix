@@ -1,3 +1,4 @@
+local autocmd = require("plugins.notebook.autocmds").init
 return {
 	{
 		--- mdmath
@@ -6,7 +7,11 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		opts = require("plugins.notebook.mdmath").opts,
-		ft = { "markdown", "quarto" },
+		init = function()
+			autocmd("quarto", function()
+				require("mdmath").setup()
+			end)
+		end,
 	},
 
 	--- quarto
@@ -16,7 +21,19 @@ return {
 			"jmbuhr/otter.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		ft = { "quarto" },
+		init = function()
+			autocmd("quarto", function()
+				require("quarto").setup()
+				vim.cmd.runtime("plugin/rplugin.vim")
+				local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+				if venv ~= nil then
+					venv = string.match(venv, "/.+/(.+)")
+					vim.cmd(("MoltenInit %s"):format(venv))
+				else
+					vim.cmd("MoltenInit python3")
+				end
+			end)
+		end,
 		opts = {
 			lspFeatures = {
 				languages = { "python" },
@@ -38,7 +55,6 @@ return {
 	--- molten
 	{
 		"benlubas/molten-nvim",
-		ft = { "quarto" },
 		build = {
 			[[python -m venv ~/.virtualenvs/neovim &&
       source ~/.virtualenvs/neovim/bin/activate &&
@@ -53,7 +69,6 @@ return {
 			vim.g.molten_virt_text_output = true
 			vim.g.molten_virt_lines_off_by_1 = true
 		end,
-		configs = function() end,
 	},
 
 	{

@@ -52,23 +52,6 @@ AutoCmd("User", {
 	end,
 })
 
-AutoCmd("FileType", {
-	pattern = { "quarto" },
-	once = true,
-	callback = function()
-		vim.cmd.runtime("plugin/rplugin.vim")
-		vim.schedule(function()
-			local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
-			if venv ~= nil then
-				venv = string.match(venv, "/.+/(.+)")
-				vim.cmd(("MoltenInit %s"):format(venv))
-			else
-				vim.cmd("MoltenInit python3")
-			end
-		end)
-	end,
-})
-
 AutoCmd("User", {
 	pattern = "MoltenKernelReady",
 	callback = function()

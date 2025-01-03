@@ -57,14 +57,29 @@ AutoCmd("FileType", {
 	once = true,
 	callback = function()
 		vim.cmd.runtime("plugin/rplugin.vim")
-		vim.cmd("MoltenInit")
+		vim.schedule(function()
+			local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+			if venv ~= nil then
+				venv = string.match(venv, "/.+/(.+)")
+				vim.cmd(("MoltenInit %s"):format(venv))
+			else
+				vim.cmd("MoltenInit python3")
+			end
+		end)
+	end,
+})
+
+AutoCmd("User", {
+	pattern = "MoltenKernelReady",
+	callback = function()
+		local map = vim.keymap.set
 		local runner = require("quarto.runner")
-		vim.keymap.set("n", "<localleader>rc", runner.run_cell, { desc = "run cell", silent = true })
-		vim.keymap.set("n", "<localleader>ra", runner.run_above, { desc = "run cell and above", silent = true })
-		vim.keymap.set("n", "<localleader>rA", runner.run_all, { desc = "run all cells", silent = true })
-		vim.keymap.set("n", "<localleader>rl", runner.run_line, { desc = "run line", silent = true })
-		vim.keymap.set("v", "<localleader>r", runner.run_range, { desc = "run visual range", silent = true })
-		vim.keymap.set("n", "<localleader>RA", function()
+		map("n", "<localleader>rc", runner.run_cell, { desc = "run cell", silent = true })
+		map("n", "<localleader>ra", runner.run_above, { desc = "run cell and above", silent = true })
+		map("n", "<localleader>rA", runner.run_all, { desc = "run all cells", silent = true })
+		map("n", "<localleader>rl", runner.run_line, { desc = "run line", silent = true })
+		map("v", "<localleader>r", runner.run_range, { desc = "run visual range", silent = true })
+		map("n", "<localleader>RA", function()
 			runner.run_all(true)
 		end, { desc = "run all cells of all languages", silent = true })
 	end,

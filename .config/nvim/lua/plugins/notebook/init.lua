@@ -8,10 +8,23 @@ return {
 		},
 		opts = require("plugins.notebook.mdmath").opts,
 		init = function()
-			autocmd("quarto", function()
+			autocmd({ "markdown" }, function()
 				require("mdmath").setup()
 			end)
 		end,
+	},
+	{
+		"iurimateus/luasnip-latex-snippets.nvim",
+		init = function()
+			autocmd({ "markdown" }, function()
+				require("luasnip-latex-snippets")
+			end)
+		end,
+		dependencies = { "L3MON4D3/LuaSnip" },
+		opts = {
+			use_treesitter = true,
+			allow_on_markdown = true,
+		},
 	},
 
 	--- quarto
@@ -22,13 +35,13 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		init = function()
-			autocmd("quarto", function()
+			autocmd({ "markdown" }, function()
 				require("quarto").setup()
 				vim.cmd.runtime("plugin/rplugin.vim")
 				local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
 				if venv ~= nil then
 					venv = string.match(venv, "/.+/(.+)")
-					vim.cmd(("MoltenInit %s"):format(venv))
+					vim.cmd(("MoltenInit shared %s"):format(venv))
 				else
 					vim.cmd("MoltenInit python3")
 				end
@@ -65,6 +78,7 @@ return {
 		init = function()
 			vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 			vim.g.molten_image_provider = "image.nvim"
+			vim.g.molten_open_output = true
 			vim.g.molten_wrap_output = true
 			vim.g.molten_virt_text_output = true
 			vim.g.molten_virt_lines_off_by_1 = true

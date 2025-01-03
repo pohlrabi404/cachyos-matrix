@@ -2,7 +2,7 @@ local M = {
 	---------- Theme ----------
 	{
 		"stevearc/dressing.nvim",
-		event = { "WinEnter" },
+		event = { "User FilePost" },
 		opts = {},
 	},
 	{

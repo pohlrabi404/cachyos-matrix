@@ -46,8 +46,9 @@ c.colors.completion.odd.bg = '#000000'
 c.colors.completion.fg = c3 
 
 c.colors.webpage.preferred_color_scheme = "dark"
-c.colors.webpage.darkmode.policy.images = "smart-simple"
+c.colors.webpage.darkmode.policy.images = "never"
 c.colors.webpage.darkmode.enabled = True
+config.set("colors.webpage.darkmode.enabled",False, "*://discord.com/*")
 
 c.colors.hints.fg = '#4e31a4'
 c.colors.hints.match.fg = '#7e6ac1'

@@ -11,6 +11,8 @@ map("t", "<C-w><C-j>", "<C-\\><C-N><C-w><C-j>", { desc = "move down" })
 map("t", "<C-w><C-k>", "<C-\\><C-N><C-w><C-k>", { desc = "move up" })
 map("t", "<C-w><C-l>", "<C-\\><C-N><C-w><C-l>", { desc = "move right" })
 
+map("n", "<Esc>", "<Esc><cmd>nohlsearch<CR>")
+
 -- Exit terminal mode
 map("t", "<C-e>", "<C-\\><C-N>")
 

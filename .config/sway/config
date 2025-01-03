@@ -42,8 +42,8 @@ blur_saturation 1.1
 
 shadows on 
 shadows_on_csd on 
-shadow_blur_radius 20
-shadow_color #D1C4E9
+shadow_blur_radius 10
+shadow_color #b1a2ca
 shadow_inactive_color #000000
 shadow_offset 0 0
 

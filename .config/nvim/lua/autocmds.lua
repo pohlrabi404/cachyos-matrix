@@ -72,7 +72,6 @@ AutoCmd("FileType", {
 AutoCmd("User", {
 	pattern = "MoltenKernelReady",
 	callback = function()
-		local map = vim.keymap.set
 		local runner = require("quarto.runner")
 		map("n", "<localleader>rc", runner.run_cell, { desc = "run cell", silent = true })
 		map("n", "<localleader>ra", runner.run_above, { desc = "run cell and above", silent = true })

@@ -20,7 +20,7 @@ c.statusbar.show = 'always'
 
 c1 = "#d6cff8"
 c2 = "#7e6ac1"
-c3 = "#4e31a4"
+c3 = "#62438c"
 
 c.colors.tabs.bar.bg = '#000000'
 c.colors.tabs.selected.even.bg = c2

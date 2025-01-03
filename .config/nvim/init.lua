@@ -15,19 +15,6 @@ AutoCmd = vim.api.nvim_create_autocmd
 AutoGroup = vim.api.nvim_create_augroup
 ExeAutoCmd = vim.api.nvim_exec_autocmds
 
----@param opts table
----@param event string|table
-AutoCmdSchedule = function(event, opts)
-	opts = opts or {}
-	local copt = {
-		callback = function()
-			vim.schedule(opts.callback)
-		end,
-	}
-	opts = vim.tbl_deep_extend("force", opts, copt)
-	AutoCmd(event, opts)
-end
-
 local lazy_config = require("plugins.lazy.configs")
 require("lazy").setup({
 	{ import = "plugins" },

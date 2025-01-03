@@ -17,7 +17,7 @@ M.config = function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
-		completions = { completeopt = "menu,menuone,preview" },
+		completions = { completeopt = "menu,menuone" },
 		mapping = cmp.mapping.preset.insert({
 			["<C-j>"] = cmp.mapping.select_next_item(),
 			["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -49,6 +49,7 @@ M.config = function()
 			{ name = "luasnip" },
 			{ name = "path" },
 			{ name = "buffer" },
+			{ name = "otter" },
 		},
 	})
 end

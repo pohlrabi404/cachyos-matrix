@@ -7,7 +7,7 @@ local M = {
 	},
 	{
 		"uga-rosa/ccc.nvim",
-		event = "User FilePost",
+		ft = { "lua", "css" },
 		opts = {
 			highlighter = {
 				auto_enable = true,

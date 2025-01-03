@@ -30,7 +30,17 @@ M.servers = {
 		},
 	},
 	stylua = {},
-	pyright = {},
+	pyright = {
+		settings = {
+			python = {
+				analysis = {
+					diagnosticsSeverityOverrides = {
+						reportUnusedExpression = "none",
+					},
+				},
+			},
+		},
+	},
 }
 
 return M

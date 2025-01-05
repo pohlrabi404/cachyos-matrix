@@ -43,7 +43,7 @@ AutoCmd("LspAttach", {
 })
 
 AutoCmd("User", {
-	pattern = "telescope-mapping",
+	pattern = "TelescopeMap",
 	callback = function()
 		local fb = require("plugins.telescope.customs")
 		map("n", "<leader>ff", fb.find_files, { desc = "[f]ind [f]iles" })
@@ -65,5 +65,22 @@ AutoCmd("User", {
 		map("n", "<localleader>RA", function()
 			runner.run_all(true)
 		end, { desc = "run all cells of all languages", silent = true })
+	end,
+})
+
+AutoCmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		vim.keymap.set("n", "<localleader>ck", function()
+			require("quarto")
+			vim.cmd.runtime("plugin/rplugin.vim")
+			local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+			if venv ~= nil then
+				venv = string.match(venv, "/.+/(.+)")
+				vim.cmd(("MoltenInit shared %s"):format(venv))
+			else
+				vim.cmd("MoltenInit python3")
+			end
+		end, { desc = "[c]onnect [k]ernel" })
 	end,
 })

@@ -13,19 +13,6 @@ return {
 			end)
 		end,
 	},
-	{
-		"iurimateus/luasnip-latex-snippets.nvim",
-		init = function()
-			autocmd({ "markdown" }, function()
-				require("luasnip-latex-snippets")
-			end)
-		end,
-		dependencies = { "L3MON4D3/LuaSnip" },
-		opts = {
-			use_treesitter = true,
-			allow_on_markdown = true,
-		},
-	},
 
 	--- quarto
 	{
@@ -34,18 +21,8 @@ return {
 			"jmbuhr/otter.nvim",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		init = function()
-			autocmd({ "markdown" }, function()
-				require("quarto").setup()
-				vim.cmd.runtime("plugin/rplugin.vim")
-				local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
-				if venv ~= nil then
-					venv = string.match(venv, "/.+/(.+)")
-					vim.cmd(("MoltenInit shared %s"):format(venv))
-				else
-					vim.cmd("MoltenInit python3")
-				end
-			end)
+		config = function(_, opts)
+			require("quarto").setup(opts)
 		end,
 		opts = {
 			lspFeatures = {

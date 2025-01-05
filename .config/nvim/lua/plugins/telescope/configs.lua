@@ -26,7 +26,7 @@ M.setup = function()
 	})
 
 	ExeAutoCmd("User", {
-		pattern = "telescope-mapping",
+		pattern = "TelescopeMap",
 	})
 end
 

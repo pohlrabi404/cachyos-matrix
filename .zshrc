@@ -38,17 +38,6 @@
     ssh-add $HOME/.ssh/id_matrix
     cd $HOME/dotfiles/pohlrabi/.config
   }
-  # function pwiki() {
-  #   eval $(ssh-agent -s)
-  #   ssh-add $HOME/.ssh/id_wiki
-  #   cd $HOME/wiki/knowledge
-  # }
-  function pobsidian() {
-    eval $(ssh-agent -s)
-    ssh-add $HOME/.ssh/id_obsidian
-    cd $HOME/vaults/
-  }
-
 #
 # Alias
 #
@@ -66,3 +55,5 @@
 # FZF keybind
 #
   source <(fzf --zsh)
+  alias v='nvim'
+  alias vcock='NVIM_APPNAME=nvim-cock nvim'

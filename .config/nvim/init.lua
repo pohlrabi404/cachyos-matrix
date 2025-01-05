@@ -27,10 +27,5 @@ require("options")
 require("autocmds")
 
 vim.schedule(function()
-	require("luasnip").config.setup({ enable_autosnippets = true })
-	require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
-end)
-
-vim.schedule(function()
 	require("mappings")
 end)

@@ -7,7 +7,17 @@ local M = {
 	},
 	{
 		"uga-rosa/ccc.nvim",
-		ft = { "lua", "css" },
+		-- ft = { "lua", "css" },
+		init = function()
+			AutoCmd("FileType", {
+				pattern = { "lua", "css" },
+				callback = function()
+					vim.schedule(function()
+						require("ccc")
+					end)
+				end,
+			})
+		end,
 		opts = {
 			highlighter = {
 				auto_enable = true,
@@ -52,6 +62,13 @@ local M = {
 		"folke/which-key.nvim",
 		opts = {},
 		event = "VeryLazy",
+	},
+	{
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
+		opts = {
+			-- options
+		},
 	},
 }
 

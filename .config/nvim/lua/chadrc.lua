@@ -39,7 +39,7 @@ M = {
 				cmd = "Telescope file_browser",
 			},
 			{ txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
-			{ txt = "󰈭  Find Word", keys = "fw", cmd = "Telescope live_grep" },
+			{ txt = "󰈭  Find Word", keys = "fg", cmd = "Telescope live_grep" },
 			{ txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()" },
 
 			{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },

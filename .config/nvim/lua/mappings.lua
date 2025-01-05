@@ -1,16 +1,6 @@
 local map = vim.keymap.set
 
 -- Moving around between windows
-map("i", "<C-w><C-h>", "<C-\\><C-N><C-w><C-h>", { desc = "move left" })
-map("i", "<C-w><C-j>", "<C-\\><C-N><C-w><C-j>", { desc = "move down" })
-map("i", "<C-w><C-k>", "<C-\\><C-N><C-w><C-k>", { desc = "move up" })
-map("i", "<C-w><C-l>", "<C-\\><C-N><C-w><C-l>", { desc = "move right" })
-
-map("t", "<C-w><C-h>", "<C-\\><C-N><C-w><C-h>", { desc = "move left" })
-map("t", "<C-w><C-j>", "<C-\\><C-N><C-w><C-j>", { desc = "move down" })
-map("t", "<C-w><C-k>", "<C-\\><C-N><C-w><C-k>", { desc = "move up" })
-map("t", "<C-w><C-l>", "<C-\\><C-N><C-w><C-l>", { desc = "move right" })
-
 map("n", "<Esc>", "<Esc><cmd>nohlsearch<CR>")
 
 -- Exit terminal mode

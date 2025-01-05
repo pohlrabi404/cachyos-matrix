@@ -5,7 +5,6 @@ M.config = function()
 
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
-	-- luasnip.config.setup({ enable_autosnippets = true })
 
 	cmp.setup({
 		window = {

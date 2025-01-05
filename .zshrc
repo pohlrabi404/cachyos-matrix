@@ -56,4 +56,4 @@
 #
   source <(fzf --zsh)
   alias v='nvim'
-  alias vcock='NVIM_APPNAME=nvim-cock nvim'
+  alias vcock='NVIM_APPNAME=nvim-coq nvim'

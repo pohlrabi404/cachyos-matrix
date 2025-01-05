@@ -3,6 +3,8 @@ local M = {}
 M = {
 	defaults = { lazy = true },
 
+	colorscheme = "industry",
+
 	change_detection = { notify = false },
 
 	ui = {

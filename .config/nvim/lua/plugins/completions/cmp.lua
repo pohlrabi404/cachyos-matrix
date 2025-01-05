@@ -26,7 +26,7 @@ M.config = function()
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 			["<C-l>"] = cmp.mapping(function(fallback)
-				if luasnip.expand_or_locally_jumpable() then
+				if luasnip.expand_or_jumpable() then
 					luasnip.expand_or_jump()
 				else
 					fallback()

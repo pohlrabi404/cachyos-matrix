@@ -2,7 +2,7 @@ return {
 	--- Mason ---
 	"williamboman/mason-lspconfig.nvim",
 	"mason-tool-installer.nvim",
-	"hrsh7th/cmp-nvim-lsp",
+	-- "hrsh7th/cmp-nvim-lsp",
 	{
 		"williamboman/mason.nvim",
 		cmd = { "Mason", "MasonInstall" },

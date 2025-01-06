@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-
 -- Moving around between windows
 map("n", "<Esc>", "<Esc><cmd>nohlsearch<CR>")
 

@@ -64,6 +64,8 @@ return {
 
 	{
 		"3rd/image.nvim",
+		---@module "image"
+		---@type ImageOptions
 		opts = {
 			backend = "kitty",
 			processor = "magick_rock",
@@ -75,11 +77,34 @@ return {
 				},
 			},
 			max_width = 100, -- tweak to preference
-			max_height = 16, -- ^
+			max_height = 10, -- ^
 			max_height_window_percentage = math.huge, -- this is necessary for a good experience
 			max_width_window_percentage = math.huge,
 			window_overlap_clear_enabled = true,
 			window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+		},
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		-- ft = { "markdown" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		init = function()
+			vim.schedule(function()
+				require("render-markdown").setup()
+			end)
+		end,
+
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {
+			preset = "obsidian",
+			latex = {
+				enabled = true,
+			},
+			code = {
+				style = "full",
+				left_pad = 2,
+			},
 		},
 	},
 }

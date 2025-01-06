@@ -2,6 +2,11 @@ return {
 	"saghen/blink.cmp",
 	version = "*",
 	dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
+	config = function(_, opts)
+		opts = opts or {}
+		dofile(vim.g.base46_cache .. "cmp")
+		require("blink.cmp").setup(opts)
+	end,
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
@@ -19,9 +24,6 @@ return {
 				require("luasnip").jump(direction)
 			end,
 		},
-		sources = {
-			default = { "lsp", "path", "luasnip", "buffer" },
-		},
 		keymap = {
 			preset = "none",
 			["<C-j>"] = { "select_next", "fallback" },
@@ -31,7 +33,7 @@ return {
 			["<C-l>"] = { "snippet_forward", "fallback" },
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
-			["<BS>"] = { "cancel", "fallback" },
+			["<C-n>"] = { "cancel", "fallback" },
 		},
 		appearance = {
 			use_nvim_cmp_as_default = true,
@@ -56,6 +58,17 @@ return {
 			},
 			menu = {
 				border = "rounded",
+			},
+		},
+
+		sources = {
+			default = { "lsp", "path", "luasnip", "buffer", "lazydev" },
+			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
+				},
 			},
 		},
 	},

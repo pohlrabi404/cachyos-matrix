@@ -86,12 +86,16 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		-- ft = { "markdown" },
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 		init = function()
-			vim.schedule(function()
-				require("render-markdown").setup()
-			end)
+			AutoCmd("FileType", {
+				pattern = "markdown",
+				callback = function()
+					vim.schedule(function()
+						require("render-markdown").setup()
+					end)
+				end,
+			})
 		end,
 
 		---@module 'render-markdown'

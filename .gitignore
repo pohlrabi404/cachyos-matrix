@@ -1,3 +1,4 @@
 **/Session.vim
 .config/qutebrowser/bookmarks/urls
 .config/qutebrowser/autoconfig.yml
+.config/qutebrowser/qsettings/QtProject.conf

@@ -1,0 +1,48 @@
+return {
+	{
+		"folke/snacks.nvim",
+		lazy = false,
+
+		---@type snacks.Config
+		opts = {
+			---@class snacks.profiler.Config
+			profiler = {
+				startup = {
+					event = "User FilePost",
+				},
+				globals = {
+					"vim",
+					"vim.api",
+					"vim.keymap",
+				},
+			},
+			---@class snacks.bigfile.Config
+			bigfile = {
+				enabled = true,
+			},
+		},
+		keys = {
+			{
+				"<leader>ps",
+				function()
+					Snacks.profiler.scratch()
+				end,
+				desc = "Profiler Scratch Bufer",
+			},
+			{
+				"<leader>ph",
+				function()
+					Snacks.profiler.highlight()
+				end,
+				desc = "Profiler Toggle highlight",
+			},
+			{
+				"<leader>pp",
+				function()
+					Snacks.profiler.toggle()
+				end,
+				desc = "Profiler Toggle",
+			},
+		},
+	},
+}

@@ -29,26 +29,29 @@ local map = vim.keymap.set
 AutoCmd("LspAttach", {
 	group = AutoGroup("lsp-attach-mapping", { clear = true }),
 	callback = function()
-		local builtin = require("telescope.builtin")
+		local builtin = require("fzf-lua")
 		map("n", "gd", builtin.lsp_definitions, { desc = "[g]oto [d]efinitions" })
 		map("n", "gr", builtin.lsp_references, { desc = "[g]oto [r]eferences" })
 		map("n", "gi", builtin.lsp_implementations, { desc = "[g]oto [i]mplementations" })
-		map("n", "gtd", builtin.lsp_type_definitions, { desc = "[t]ype [d]definitions" })
+		map("n", "gtd", builtin.lsp_typedefs, { desc = "[t]ype [d]definitions" })
 		map("n", "gds", builtin.lsp_document_symbols, { desc = "[d]oc [s]ymbols" })
-		map("n", "gws", builtin.lsp_workspace_symbols, { desc = "[w]ork [s]ymbols" })
-		map("n", "gD", vim.lsp.buf.declaration, { desc = "[g]oto [D]eclaration" })
+		map("n", "gws", builtin.lsp_live_workspace_symbols, { desc = "[w]ork [s]ymbols" })
+		map("n", "gD", builtin.lsp_declarations, { desc = "[g]oto [D]eclaration" })
 		map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "[r]e[n]ame" })
-		map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[c]ode [a]ction" })
+		map("n", "<leader>ca", builtin.lsp_code_actions, { desc = "[c]ode [a]ction" })
 	end,
 })
 
 AutoCmd("User", {
-	pattern = "TelescopeMap",
+	pattern = "Fzf",
 	callback = function()
-		local fb = require("plugins.telescope.customs")
-		map("n", "<leader>ff", fb.find_files, { desc = "[f]ind [f]iles" })
-		map("n", "<leader>fb", fb.file_buffer, { desc = "[f]ile [b]uffer" })
-		map("n", "<leader>fg", fb.live_grep, { desc = "[f]ile [g]rep" })
+		local fzf = require("fzf-lua")
+		map("n", "<leader>fg", function()
+			fzf.live_grep()
+		end, { desc = "[f]iles [g]rep" })
+		map("n", "<leader>fb", function()
+			fzf.buffers()
+		end, { desc = "[f]iles [b]uffers" })
 	end,
 })
 

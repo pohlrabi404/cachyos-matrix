@@ -3,111 +3,116 @@ items = [
 #
 # System
 #
-  "keyd",
-  "neovim",
-  "swayfx",
-  "luarocks",
-  "hererocks",
-  "dunst",
-  "lua51",
+"keyd",
+"neovim",
+"swayfx",
+"luarocks",
+"hererocks",
+"dunst",
+"lua51",
 
 # Nvim
-  # Luasnip
-  "lua-jsregexp",
+# Luasnip
+"lua-jsregexp",
 
 #
 # Browser
 #
-  "qutebrowser",
-  "python-adblock",
+"qutebrowser",
+"python-adblock",
 
 #
 # Fuzzy Finder
 # 
-  "fzf",
+"fzf",
 
 #
 # Background
 #
-  "swww",
+"swww",
 
 #
 # App launcher
 #
-  "rofi-wayland",
+"rofi-wayland",
 
 #
 # Font
 #
-  "ttf-cmu-serif",
-  "ttf-intone-nerd",
+"ttf-cmu-serif",
+"ttf-intone-nerd",
 
 # 
 # Japanese font
 #
-  "ttf-koruri",
-  "fcitx5",
-  "fcitx5-configtool",
-  "fcitx5-gtk",
-  "fcitx5-qt",
-  "fcitx5-mozc",
+"ttf-koruri",
+"fcitx5",
+"fcitx5-configtool",
+"fcitx5-gtk",
+"fcitx5-qt",
+"fcitx5-mozc",
 
 #
 # Excel
 #
-  "pdfjs",
-  "libreoffice-fresh",
+"pdfjs",
+"libreoffice-fresh",
 
 #
 # Screen Capture
 #
-  "slurp",
-  "grim",
-  "swayimg",
-  "wl-clipboard",
-  "wf-recorder",
+"slurp",
+"grim",
+"swayimg",
+"wl-clipboard",
+"wf-recorder",
 
 #
 # Wireshark
 #
-  "wireshark-qt",
+"wireshark-qt",
 
 #
 # Matrix for funsie
 #
-  "cmatrix",
+"cmatrix",
 
 #
 # Music player
 #
-  "nuclear-player-bin",
+"nuclear-player-bin",
 
 #
 # YouTube
 # 
-  "mpv",
-  "svp-bin",
-  "yt-dlp",
-  "zenity",
+"mpv",
+"svp-bin",
+"yt-dlp",
+"zenity",
 
 #
 # Image Viewer
 #
-  "vimiv-qt",
+"vimiv-qt",
+"ueberzugpp",
 
 #
 # Note taking
 #
-  "obsidian",
-  
-  "kitty",
-  "imagemagick",
+"obsidian",
+
+"kitty",
+"imagemagick",
 
 # Steam
-  "steam",
-  "tree-sitter-markdown",
+"steam",
+"tree-sitter-markdown",
 # Lazygit
-  "lazygit",
+"lazygit",
 
-  "swaylock",
+"swaylock",
+
+# File navigation 
+"yazi",
+
 ]

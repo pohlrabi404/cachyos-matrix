@@ -36,10 +36,10 @@ M = {
 			{
 				txt = "  Find File",
 				keys = "ff",
-				cmd = "Telescope file_browser",
+				cmd = "Yazi",
 			},
-			{ txt = "  Recent Files", keys = "fo", cmd = "Telescope oldfiles" },
-			{ txt = "󰈭  Find Word", keys = "fg", cmd = "Telescope live_grep" },
+			{ txt = "  Recent Files", keys = "fo", cmd = "FzfLua oldfiles" },
+			{ txt = "󰈭  Find Word", keys = "fg", cmd = "FzfLua live_grep_native" },
 			{ txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()" },
 
 			{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },

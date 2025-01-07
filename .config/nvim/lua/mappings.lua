@@ -13,7 +13,7 @@ map("i", "<c-;>", "<Esc>A;")
 map("i", "<c-,>", "<Esc>A,")
 
 local term = require("nvchad.term")
-map({ "n", "t" }, "<C-g>", function()
+map({ "n", "t" }, "<localleader>g", function()
 	term.toggle({
 		id = "lazygit",
 		pos = "float",
@@ -27,7 +27,7 @@ map({ "n", "t" }, "<C-g>", function()
 	})
 end, { desc = "Lazy Git" })
 
-map({ "n", "t" }, "<C-t>", function()
+map({ "n", "t" }, "<localleader>t", function()
 	term.toggle({
 		id = "term",
 		pos = "sp",

@@ -34,7 +34,7 @@ local M = {
 		end,
 	},
 	{
-		"pohlrabi404/nvchad-ui",
+		"nvchad/ui",
 		lazy = false,
 		config = function()
 			require("nvchad")
@@ -62,13 +62,6 @@ local M = {
 		"folke/which-key.nvim",
 		opts = {},
 		event = "User FilePost",
-	},
-	{
-		"j-hui/fidget.nvim",
-		event = "LspAttach",
-		opts = {
-			-- options
-		},
 	},
 }
 

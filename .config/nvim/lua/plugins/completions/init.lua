@@ -40,13 +40,23 @@ return {
 			nerd_font_variant = "mono",
 		},
 		completion = {
+			accept = {
+				create_undo_point = true,
+			},
 			list = {
+				max_items = 10,
 				cycle = {
 					from_top = true,
 					from_bottom = true,
 				},
 				selection = function(ctx)
-					return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+					local is_math = require("md-latex").is_math
+					if ctx.mode == "cmdline" then
+						return "manual"
+					elseif is_math then
+						return "manual"
+					end
+					return "auto_insert"
 				end,
 			},
 			documentation = {

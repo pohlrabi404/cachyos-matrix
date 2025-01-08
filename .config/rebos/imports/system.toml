@@ -41,6 +41,7 @@ items = [
 #
 "ttf-cmu-serif",
 "ttf-intone-nerd",
+"fontforge",
 
 # 
 # Japanese font

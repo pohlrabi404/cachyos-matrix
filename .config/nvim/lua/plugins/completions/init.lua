@@ -23,6 +23,7 @@ return {
 			jump = function(direction)
 				require("luasnip").jump(direction)
 			end,
+			preset = "luasnip",
 		},
 		keymap = {
 			preset = "none",
@@ -52,14 +53,30 @@ return {
 					from_top = true,
 					from_bottom = true,
 				},
-				selection = function(ctx)
-					local is_math = require("md-latex").is_math
-					if ctx.mode == "cmdline" or is_math() then
-						return "manual"
-					else
-						return "preselect"
-					end
-				end,
+				-- selection = function(ctx)
+				-- 	local is_math = require("md-latex").is_math
+				-- 	if ctx.mode == "cmdline" or is_math() then
+				-- 		return "manual"
+				-- 	else
+				-- 		return "preselect"
+				-- 	end
+				-- end,
+				selection = {
+					auto_insert = function(ctx)
+						local is_math = require("md-latex").is_math
+						if ctx.mode == "cmdline" or is_math() then
+							return false
+						end
+						return true
+					end,
+					preselect = function(ctx)
+						local is_math = require("md-latex").is_math
+						if ctx.mode == "cmdline" or is_math() then
+							return false
+						end
+						return true
+					end,
+				},
 			},
 			documentation = {
 				auto_show = true,
@@ -74,19 +91,12 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "luasnip", "buffer", "lazydev" },
+			default = { "lsp", "path", "snippets", "buffer", "lazydev" },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100,
-				},
-				luasnip = {
-					name = "Luasnip",
-					module = "blink.cmp.sources.luasnip",
-					opts = {
-						show_autosnippets = false,
-					},
 				},
 			},
 		},

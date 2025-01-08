@@ -21,10 +21,13 @@ configuration {
 
     background-window:           black/95%;
     background-normal:           white/5%;
-    background-selected:         white/35%;
+    background-selected:         white/10%;
     foreground-normal:           white;
     foreground-selected:         white;
 }
+
+/*****----- Global Properties -----*****/
+@import                          "shared/colors.rasi"
 
 /*****----- Main Window -----*****/
 window {
@@ -122,4 +125,7 @@ element-text {
 element selected.normal {
     background-color:            var(background-selected);
     text-color:                  var(foreground-selected);
+    border:                      0px 0px 2px 0px;
+    border-radius:               60px;
+    border-color:                @selected;
 }

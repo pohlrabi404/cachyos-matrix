@@ -24,7 +24,7 @@ window {
     width:                       500px;
     border-radius:               20px;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            black/95%;
 }
 
 /*****----- Main Box -----*****/
@@ -40,7 +40,7 @@ message {
     margin:                      0px;
     padding:                     20px;
     border-radius:               20px;
-    background-color:            @background-alt;
+    background-color:            transparent;
     text-color:                  @foreground;
 }
 textbox {
@@ -75,7 +75,7 @@ listview {
 element {
     padding:                     50px 10px 70px 10px;
     border-radius:               20px;
-    background-color:            @background-alt;
+    background-color:            white/5%;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
@@ -88,6 +88,8 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    background-color:            var(selected);
-    text-color:                  var(background);
+    background-color:            white/10%;
+    border:                      0px 0px 2px 0px;
+    border-radius:               20px;
+    border-color:                @selected;
 }

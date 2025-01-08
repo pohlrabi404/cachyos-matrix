@@ -40,6 +40,9 @@ return {
 			nerd_font_variant = "mono",
 		},
 		completion = {
+			ghost_text = {
+				enabled = true,
+			},
 			accept = {
 				create_undo_point = true,
 			},
@@ -51,12 +54,11 @@ return {
 				},
 				selection = function(ctx)
 					local is_math = require("md-latex").is_math
-					if ctx.mode == "cmdline" then
+					if ctx.mode == "cmdline" or is_math() then
 						return "manual"
-					elseif is_math then
-						return "manual"
+					else
+						return "preselect"
 					end
-					return "auto_insert"
 				end,
 			},
 			documentation = {
@@ -78,6 +80,13 @@ return {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100,
+				},
+				luasnip = {
+					name = "Luasnip",
+					module = "blink.cmp.sources.luasnip",
+					opts = {
+						show_autosnippets = false,
+					},
 				},
 			},
 		},

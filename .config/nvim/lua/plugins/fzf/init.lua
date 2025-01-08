@@ -12,6 +12,15 @@ return {
 		end,
 
 		---@class fzf-lua
-		opts = {},
+		---@module "fzf-lua.config"
+		opts = {
+			winopts = {
+				height = 0.80,
+				width = 0.80,
+				row = 0.5,
+				col = 0.5,
+			},
+			preview = {},
+		},
 	},
 }

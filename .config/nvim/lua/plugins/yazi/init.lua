@@ -20,7 +20,7 @@ return {
 		---@module "yazi"
 		---@type YaziConfig
 		opts = {
-			floating_window_scaling_factor = 0.8,
+			floating_window_scaling_factor = 0.80,
 			integrations = {
 				grep_in_directory = function(directory)
 					local fzf = require("fzf-lua")

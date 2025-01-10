@@ -2,7 +2,10 @@ local autocmd = require("plugins.notebook.autocmds").init
 return {
 	{
 		--- mdmath
-		"Thiago4532/mdmath.nvim",
+		-- "Thiago4532/mdmath.nvim",
+		-- "pohlrabi404/mdmath.nvim",
+		dir = "~/projects/nvim/plugins/mdmath",
+		name = "mdmath",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 		},
@@ -56,7 +59,7 @@ return {
 			vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python3")
 			vim.g.molten_image_provider = "image.nvim"
 			vim.g.molten_open_output = true
-			vim.g.molten_auto_open_output = true
+			vim.g.molten_auto_open_output = false
 			vim.g.molten_wrap_output = true
 			vim.g.molten_virt_text_output = true
 			vim.g.molten_virt_lines_off_by_1 = true

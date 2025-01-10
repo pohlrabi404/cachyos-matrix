@@ -4,7 +4,9 @@ M.opts = function(_, opts)
 	opts = opts or {}
 	local custom_opts = {
 		filetypes = { "markdown", "quarto" },
-		dynamic_scale = 0.7,
+		dynamic_scale = 1.0,
+		hide_on_insert = true,
+		anticonceal = true,
 		update_interval = 200,
 		internal_scale = 2,
 	}

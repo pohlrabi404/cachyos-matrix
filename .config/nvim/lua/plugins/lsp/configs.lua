@@ -41,6 +41,10 @@ M.servers = {
 			},
 		},
 	},
+
+	ts_ls = {},
+	eslint = {},
+	prettier = {},
 }
 
 return M

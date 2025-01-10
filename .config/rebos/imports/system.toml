@@ -94,7 +94,7 @@ items = [
 #
 # Image Viewer
 #
-"vimiv-qt",
+"vimiv-git",
 "ueberzugpp",
 
 #

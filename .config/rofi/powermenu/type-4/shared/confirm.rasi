@@ -88,7 +88,8 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    background-color:            white/10%;
+    background-color:            #d7c2e6;
+    text-color:            black;
     border:                      0px 0px 2px 0px;
     border-radius:               20px;
     border-color:                @selected;

@@ -1,7 +1,7 @@
 return {
 	--- Mason ---
 	"williamboman/mason-lspconfig.nvim",
-	"mason-tool-installer.nvim",
+	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	-- "hrsh7th/cmp-nvim-lsp",
 	{
 		"williamboman/mason.nvim",
@@ -16,6 +16,7 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "User FilePost",
 		config = require("plugins.lsp.mason").config,
+		opts = {},
 	},
 
 	{

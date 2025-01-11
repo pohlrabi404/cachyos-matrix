@@ -14,6 +14,7 @@ set $term kitty
 # App launcher 
 set $menu $HOME/.config/rofi/launchers/type-3/launcher.sh 
 set $powermenu $HOME/.config/rofi/powermenu/type-4/powermenu.sh 
+
 # Font
 exec fcitx5
 
@@ -21,7 +22,6 @@ exec fcitx5
 exec_always autotiling
 
 ### Appearance
-# window corner radius in px
 corner_radius 10
 gaps {
   inner 10
@@ -98,6 +98,7 @@ exec swww-daemon & swww img $HOME/backgrounds/rain.gif
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec kitty -d "$(pwd)"
 
     # Kill focused window
     bindsym $mod+q kill
@@ -184,10 +185,10 @@ exec swww-daemon & swww img $HOME/backgrounds/rain.gif
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $mod+Shift+$left resize shrink width 10px
-    bindsym $mod+Shift+$down resize grow height 10px
-    bindsym $mod+Shift+$up resize shrink height 10px
-    bindsym $mod+Shift+$right resize grow width 10px
+    bindsym $mod+Shift+$left resize shrink width 50px
+    bindsym $mod+Shift+$down resize grow height 50px
+    bindsym $mod+Shift+$up resize shrink height 50px
+    bindsym $mod+Shift+$right resize grow width 50px
 
 #### Startup
 

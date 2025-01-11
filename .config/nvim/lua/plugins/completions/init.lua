@@ -1,7 +1,6 @@
 return {
 	"saghen/blink.cmp",
 	version = "*",
-	dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
 	config = function(_, opts)
 		opts = opts or {}
 		dofile(vim.g.base46_cache .. "cmp")

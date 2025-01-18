@@ -57,4 +57,4 @@ sudo pacman -Rs cachy-browser
 
 # bluetooth
 sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
+sudo systemctl start bluetoothwl

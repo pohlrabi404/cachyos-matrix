@@ -58,6 +58,8 @@ items = [
 #
 "pdfjs",
 "libreoffice-fresh",
+"zathura",
+"zathura-pdf-mupdf",
 
 #
 # Screen Capture
